@@ -13,6 +13,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.205" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
@@ -21,6 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\FeelingSpa.Data.Common\FeelingSpa.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\FeelingSpa.Data.Models\FeelingSpa.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\FeelingSpa.Web.ViewModels\FeelingSpa.Web.ViewModels.csproj" />
     <ProjectReference Include="..\FeelingSpa.Services.Mapping\FeelingSpa.Services.Mapping.csproj" />
   </ItemGroup>
 

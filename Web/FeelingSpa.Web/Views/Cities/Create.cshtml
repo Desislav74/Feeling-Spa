@@ -1,0 +1,15 @@
+﻿@model FeelingSpa.Web.ViewModels.City.CreateCityInputModel
+@{
+this.ViewData["Title"] = "Add to city";
+   
+}
+<form metod="post" asp-controller="Cities" asp-action="Create" class="col-md-6 offset-md-3" >
+<h1>@this.ViewData["Title"]</h1>
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+    <input type="submit" class="btn btn-primary" /> 
+</div>
+</form>
