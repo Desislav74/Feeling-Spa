@@ -7,7 +7,7 @@
 
     public interface ICategoriesService
     {
-        Task CreateAsync(CreateCategoryInputModel input);
+        Task CreateAsync(CreateCategoryInputModel input, string imagePath);
 
         IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs();
     }

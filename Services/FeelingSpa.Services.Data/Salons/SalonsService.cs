@@ -1,4 +1,7 @@
-﻿namespace FeelingSpa.Services.Data.Salons
+﻿using System.Collections.Generic;
+using FeelingSpa.Services.Mapping;
+
+namespace FeelingSpa.Services.Data.Salons
 {
     using System;
     using System.IO;
@@ -24,6 +27,7 @@
         {
             var salon = new Salon
             {
+                Id = Guid.NewGuid().ToString(),
                 CategoryId = input.CategoryId,
                 Name = input.Name,
                 Address = input.Address,
@@ -52,6 +56,29 @@
 
             await this.salonsRepository.AddAsync(salon);
             await this.salonsRepository.SaveChangesAsync();
+        }
+
+        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 6)
+        {
+            var salons = this.salonsRepository.AllAsNoTracking()
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage).Take(itemsPerPage)
+                .To<T>().ToList();
+            return salons;
+        }
+
+        public int GetCount()
+        {
+            return this.salonsRepository.All().Count();
+        }
+
+        public T GetById<T>(string id)
+        {
+            var salon = this.salonsRepository.AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefault();
+
+            return salon;
         }
     }
 }

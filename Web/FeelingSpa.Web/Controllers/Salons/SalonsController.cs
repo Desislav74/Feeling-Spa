@@ -1,12 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-
-namespace FeelingSpa.Web.Controllers.Salons
+﻿namespace FeelingSpa.Web.Controllers.Salons
 {
+    using System;
+    using System.Threading.Tasks;
+
     using FeelingSpa.Services.Data.Categories;
     using FeelingSpa.Services.Data.Salons;
     using FeelingSpa.Web.ViewModels.Salons;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
 
     public class SalonsController : Controller
@@ -15,7 +15,9 @@ namespace FeelingSpa.Web.Controllers.Salons
         private readonly ISalonsService salonsService;
         private readonly IWebHostEnvironment environment;
 
-        public SalonsController(ICategoriesService categoriesService, ISalonsService salonsService, IWebHostEnvironment environment)
+        public SalonsController(ICategoriesService categoriesService, ISalonsService salonsService,
+            IWebHostEnvironment environment)
+
         {
             this.categoriesService = categoriesService;
             this.salonsService = salonsService;
@@ -50,6 +52,25 @@ namespace FeelingSpa.Web.Controllers.Salons
             }
 
             return this.Redirect("/");
+        }
+
+        public IActionResult All(int id = 1)
+        {
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+
+            const int ItemsPerPage = 6;
+            var viewModel = new SalonsListViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = id,
+                SalonsCount = this.salonsService.GetCount(),
+                Salons = this.salonsService.GetAll<SalonInListViewModel>(id, ItemsPerPage),
+            };
+
+            return this.View(viewModel);
         }
     }
 }
