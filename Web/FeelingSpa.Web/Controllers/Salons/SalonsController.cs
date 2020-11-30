@@ -15,8 +15,7 @@
         private readonly ISalonsService salonsService;
         private readonly IWebHostEnvironment environment;
 
-        public SalonsController(ICategoriesService categoriesService, ISalonsService salonsService,
-            IWebHostEnvironment environment)
+        public SalonsController(ICategoriesService categoriesService, ISalonsService salonsService, IWebHostEnvironment environment)
 
         {
             this.categoriesService = categoriesService;

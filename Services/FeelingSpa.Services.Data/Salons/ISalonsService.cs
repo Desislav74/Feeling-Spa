@@ -9,7 +9,7 @@
     {
         Task CreateAsync(CreateSalonInputModel input, string imagePath);
 
-        IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12);
+        IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 6);
 
         int GetCount();
 

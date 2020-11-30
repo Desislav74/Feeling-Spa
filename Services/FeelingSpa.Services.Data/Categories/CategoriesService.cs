@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FeelingSpa.Services.Mapping;
+using Microsoft.AspNetCore.Http;
 
 namespace FeelingSpa.Services.Data.Categories
 {
@@ -64,6 +65,29 @@ namespace FeelingSpa.Services.Data.Categories
                 })
                 .OrderBy(x => x.Name)
                 .ToList().Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Name));
+        }
+
+        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 6)
+        {
+            var categories = this.categoriesRepository.AllAsNoTracking()
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage).Take(itemsPerPage)
+                .To<T>().ToList();
+            return categories;
+        }
+
+        public int GetCount()
+        {
+            return this.categoriesRepository.All().Count();
+        }
+
+        public T GetById<T>(int id)
+        {
+            var category = this.categoriesRepository.AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefault();
+
+            return category;
         }
     }
 }
