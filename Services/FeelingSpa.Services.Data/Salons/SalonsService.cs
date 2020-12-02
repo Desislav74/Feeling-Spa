@@ -1,17 +1,18 @@
-﻿using System.Collections.Generic;
-using FeelingSpa.Services.Mapping;
-
-namespace FeelingSpa.Services.Data.Salons
+﻿namespace FeelingSpa.Services.Data.Salons
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
     using FeelingSpa.Data.Common.Repositories;
     using FeelingSpa.Data.Models;
+    using FeelingSpa.Services.Mapping;
     using FeelingSpa.Web.ViewModels.City;
     using FeelingSpa.Web.ViewModels.Salons;
+
+    using Microsoft.EntityFrameworkCore;
 
     public class SalonsService : ISalonsService
     {

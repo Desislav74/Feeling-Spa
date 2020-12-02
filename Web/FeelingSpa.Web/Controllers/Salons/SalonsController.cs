@@ -16,7 +16,6 @@
         private readonly IWebHostEnvironment environment;
 
         public SalonsController(ICategoriesService categoriesService, ISalonsService salonsService, IWebHostEnvironment environment)
-
         {
             this.categoriesService = categoriesService;
             this.salonsService = salonsService;
@@ -69,6 +68,12 @@
                 Salons = this.salonsService.GetAll<SalonInListViewModel>(id, ItemsPerPage),
             };
 
+            return this.View(viewModel);
+        }
+
+        public IActionResult SingleSalon(string id)
+        {
+            var viewModel = this.salonsService.GetById<SalonWhitServicesViewModel>(id);
             return this.View(viewModel);
         }
     }

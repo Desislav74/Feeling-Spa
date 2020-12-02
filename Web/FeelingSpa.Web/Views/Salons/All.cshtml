@@ -16,7 +16,7 @@
             <p class="card-title">@salon.CategoryName</p>
             <p class="card-title">@salon.Address</p>
             <div type="button" class="btn btn-primary">
-                <a asp-area="" asp-controller="Home" asp-action="Index" >
+                <a asp-area="" asp-controller="Salons" asp-action="SingleSalon"asp-route-id="@salon.Id">@salon.Name >
                     <span class="text-warning"> <h7> See Services </h7> </span>
                 </a>
             </div>
