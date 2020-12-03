@@ -1,5 +1,6 @@
 ﻿using FeelingSpa.Services.Mapping;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace FeelingSpa.Services.Data.Categories
 {
@@ -88,6 +89,17 @@ namespace FeelingSpa.Services.Data.Categories
                 .To<T>().FirstOrDefault();
 
             return category;
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var category =
+                await this.categoriesRepository
+                    .AllAsNoTracking()
+                    .Where(x => x.Id == id)
+                    .FirstOrDefaultAsync();
+            this.categoriesRepository.Delete(category);
+            await this.categoriesRepository.SaveChangesAsync();
         }
     }
 }

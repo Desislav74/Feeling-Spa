@@ -76,5 +76,13 @@
             var viewModel = this.salonsService.GetById<SalonWhitServicesViewModel>(id);
             return this.View(viewModel);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteSalon(string id)
+        {
+            await this.salonsService.DeleteAsync(id);
+
+            return this.RedirectToAction("/");
+        }
     }
 }

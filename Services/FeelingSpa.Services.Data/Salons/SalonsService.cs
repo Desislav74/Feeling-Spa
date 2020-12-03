@@ -81,5 +81,16 @@
 
             return salon;
         }
+
+        public async Task DeleteAsync(string id)
+        {
+            var salon =
+                await this.salonsRepository
+                    .AllAsNoTracking()
+                    .Where(x => x.Id == id)
+                    .FirstOrDefaultAsync();
+            this.salonsRepository.Delete(salon);
+            await this.salonsRepository.SaveChangesAsync();
+        }
     }
 }
