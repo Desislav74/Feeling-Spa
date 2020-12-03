@@ -1,0 +1,32 @@
+﻿namespace FeelingSpa.Web.ViewModels.Administration
+{
+    using System;
+
+    using FeelingSpa.Data.Models;
+    using FeelingSpa.Services.Mapping;
+
+    public class ReservationViewModel : IMapFrom<Reservation>
+    {
+        public string Id { get; set; }
+
+        public DateTime DateTime { get; set; }
+
+        public string UserEmail { get; set; }
+
+        public string SalonId { get; set; }
+
+        public string SalonName { get; set; }
+
+        public string SalonCityName { get; set; }
+
+        public string SalonAddress { get; set; }
+
+        public int ServiceId { get; set; }
+
+        public string ServiceName { get; set; }
+
+        public bool? Confirmed { get; set; }
+
+        public bool? IsSalonRatedByTheUser { get; set; }
+    }
+}
