@@ -16,5 +16,7 @@
         T GetById<T>(string id);
 
         Task DeleteAsync(string id);
+
+        Task UpdateAsync(string id, CreateEditInputViewModel input);
     }
 }

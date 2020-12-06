@@ -8,5 +8,7 @@ namespace FeelingSpa.Services.Data.Reservations
         Task<T> GetByIdAsync<T>(string id);
 
         Task<IEnumerable<T>> GetAllAsync<T>();
+
+        Task<IEnumerable<T>> GetReservationsByUserAsync<T>(string userId);
     }
 }

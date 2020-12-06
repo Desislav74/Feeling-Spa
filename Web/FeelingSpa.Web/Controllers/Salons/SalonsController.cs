@@ -1,4 +1,6 @@
-﻿namespace FeelingSpa.Web.Controllers.Salons
+﻿using FeelingSpa.Services.Data.Cities;
+
+namespace FeelingSpa.Web.Controllers.Salons
 {
     using System;
     using System.Threading.Tasks;
@@ -14,18 +16,21 @@
         private readonly ICategoriesService categoriesService;
         private readonly ISalonsService salonsService;
         private readonly IWebHostEnvironment environment;
+        private readonly ICitiesService citiesService;
 
-        public SalonsController(ICategoriesService categoriesService, ISalonsService salonsService, IWebHostEnvironment environment)
+        public SalonsController(ICategoriesService categoriesService, ISalonsService salonsService, IWebHostEnvironment environment, ICitiesService citiesService)
         {
             this.categoriesService = categoriesService;
             this.salonsService = salonsService;
             this.environment = environment;
+            this.citiesService = citiesService;
         }
 
         public IActionResult Create()
         {
             var viewModel = new CreateSalonInputModel();
             viewModel.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+            viewModel.CitiesItems = this.citiesService.GetAllAsKeyValuePairs();
             return this.View(viewModel);
         }
 
@@ -35,6 +40,7 @@
             if (!this.ModelState.IsValid)
             {
                 input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+                input.CitiesItems = this.citiesService.GetAllAsKeyValuePairs();
                 return this.View(input);
             }
 
@@ -82,7 +88,30 @@
         {
             await this.salonsService.DeleteAsync(id);
 
-            return this.RedirectToAction("/");
+            return this.RedirectToAction(nameof(this.All));
+        }
+
+        public IActionResult Edit(string id)
+        {
+
+            var inputModel = this.salonsService.GetById<CreateEditInputViewModel>(id);
+            inputModel.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+            inputModel.CitiesItems = this.citiesService.GetAllAsKeyValuePairs();
+            return this.View(inputModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(string id, CreateEditInputViewModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+                input.CitiesItems = this.citiesService.GetAllAsKeyValuePairs();
+                return this.View(input);
+            }
+
+            await this.salonsService.UpdateAsync(id, input);
+            return this.RedirectToAction(nameof(this.SingleSalon), new { id });
         }
     }
 }

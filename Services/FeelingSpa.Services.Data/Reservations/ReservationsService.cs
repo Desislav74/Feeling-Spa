@@ -1,4 +1,6 @@
-﻿namespace FeelingSpa.Services.Data.Reservations
+﻿using System;
+
+namespace FeelingSpa.Services.Data.Reservations
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -37,6 +39,18 @@
                     .OrderByDescending(x => x.DateTime)
                     .To<T>().ToListAsync();
             return reservations;
+        }
+
+        public async Task<IEnumerable<T>> GetReservationsByUserAsync<T>(string userId)
+        {
+            var appointments =
+                await this.reservationsRepository
+                    .All()
+                    .Where(x => x.UserId == userId
+                                && x.DateTime.Date > DateTime.UtcNow.Date)
+                    .OrderBy(x => x.DateTime)
+                    .To<T>().ToListAsync();
+            return appointments;
         }
     }
 }

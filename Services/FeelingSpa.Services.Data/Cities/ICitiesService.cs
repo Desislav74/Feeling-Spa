@@ -1,4 +1,6 @@
-﻿namespace FeelingSpa.Services.Data.Cities
+﻿using System.Collections.Generic;
+
+namespace FeelingSpa.Services.Data.Cities
 {
     using System.Threading.Tasks;
 
@@ -7,5 +9,7 @@
     public interface ICitiesService
     {
         Task CreateAsync(CreateCityInputModel input);
+
+        IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs();
     }
 }

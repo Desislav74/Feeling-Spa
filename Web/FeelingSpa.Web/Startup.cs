@@ -1,5 +1,6 @@
 ﻿using FeelingSpa.Services.Data.Categories;
 using FeelingSpa.Services.Data.Cities;
+using FeelingSpa.Services.Data.Reservations;
 using FeelingSpa.Services.Data.Salons;
 using FeelingSpa.Services.Data.Services;
 
@@ -73,6 +74,7 @@ namespace FeelingSpa.Web
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<ISalonsService, SalonsService>();
             services.AddTransient<IServicesService, ServicesService>();
+            services.AddTransient<IReservationsService, ReservationsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

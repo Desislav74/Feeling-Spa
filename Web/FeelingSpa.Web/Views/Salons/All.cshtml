@@ -5,20 +5,25 @@
 }
 <h1>@this.ViewData["Title"]</h1>
 <hr/>
-<div class="card" style="width: 18rem;">
+<div class=row >
     
     @foreach (var salon in this.Model.Salons)
     {
-        <img class="card-img-top" src="@salon.ImageUrl" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="mt-0"><a asp-action="ById" asp-route-id="@salon.Id"></a></h5>
-            <h5 class="card-title">@salon.Name</h5>
-            <p class="card-title">@salon.CategoryName</p>
-            <p class="card-title">@salon.Address</p>
-            <div type="button" class="btn btn-primary">
-                <a asp-area="" asp-controller="Salons" asp-action="SingleSalon"asp-route-id="@salon.Id">@salon.Name >
-                    <span class="text-warning"> <h7> See Services </h7> </span>
-                </a>
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="@salon.ImageUrl" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="mt-0"><a asp-action="ById" asp-route-id="@salon.Id"></a></h5>
+                    <h5 class="card-title">@salon.Name</h5>
+                    <p class="card-title">@salon.CategoryName</p>
+                    <p class="card-title">@salon.Address</p>
+                    <div type="button" class="btn btn-primary">
+                        <a asp-area="" asp-controller="Salons" asp-action="SingleSalon" asp-route-id="@salon.Id">
+                            @salon.Name >
+                            <span class="text-warning"> <h7> See Services </h7> </span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
      }

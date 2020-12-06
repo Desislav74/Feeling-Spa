@@ -1,8 +1,11 @@
-﻿@model FeelingSpa.Web.ViewModels.Salons.CreateSalonInputModel
+﻿@using System.Security.Cryptography.X509Certificates
+@model FeelingSpa.Web.ViewModels.Salons.CreateSalonInputModel
 @{
     this.ViewData["Title"] = "Add to salon";
     var categoryItems = this.Model.CategoriesItems
         .Select(x => new SelectListItem(x.Value, x.Key));
+    var cityItems = this.Model.CitiesItems
+        .Select(y => new SelectListItem(y.Value, y.Key));
 }
 <form metod="post" class="col-md-6 offset-md-3"asp-controller="Salons"asp-action="Create" enctype="multipart/form-data">
     <h1>@this.ViewData["Title"]</h1>
@@ -21,7 +24,8 @@
     </div>
     <div class="form-group">
         <label asp-for="CityId"></label>
-        <input asp-for="CityId" class="form-control" />
+        @*<vc:CategoriesDropDown name="CategoryId"></vc:CitiesDropDown>*@
+        <select asp-for="CityId" class="form-control" asp-items="cityItems"></select>
         <span asp-validation-for="CityId" class="text-danger"></span>
     </div>
     <div class="form-group">

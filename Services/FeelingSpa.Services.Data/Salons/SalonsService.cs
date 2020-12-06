@@ -92,5 +92,15 @@
             this.salonsRepository.Delete(salon);
             await this.salonsRepository.SaveChangesAsync();
         }
+
+        public async Task UpdateAsync(string id, CreateEditInputViewModel input)
+        {
+            var salons = this.salonsRepository.All().FirstOrDefault(x => x.Id == id);
+            salons.Name = input.Name;
+            salons.Address = input.Address;
+            salons.CategoryId = input.CategoryId;
+            salons.CityId = input.CityId;
+            await this.salonsRepository.SaveChangesAsync();
+        }
     }
 }
