@@ -1,4 +1,6 @@
-﻿namespace FeelingSpa.Web.Controllers.Categories
+﻿using FeelingSpa.Web.ViewModels.Salons;
+
+namespace FeelingSpa.Web.Controllers.Categories
 {
     using System;
     using System.Threading.Tasks;
@@ -62,6 +64,12 @@
             };
 
             return this.View(viewModel);
+        }
+
+        public IActionResult CategoryById(int id)
+        {
+            var viewModel = this.categoriesService.GetById<CategoryInListViewModel>(id);
+            return this.Redirect("/");
         }
 
         [HttpPost]

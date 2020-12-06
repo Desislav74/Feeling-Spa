@@ -18,5 +18,7 @@
         Task DeleteAsync(string id);
 
         Task UpdateAsync(string id, CreateEditInputViewModel input);
+
+        IEnumerable<T> GetAllIdsByCategory<T>(int categoryId);
     }
 }

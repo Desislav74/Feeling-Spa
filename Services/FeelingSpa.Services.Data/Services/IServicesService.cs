@@ -13,6 +13,8 @@ namespace FeelingSpa.Services.Data.Services
 
         Task<IEnumerable<T>> GetAllAsync<T>();
 
+        Task<IEnumerable<int>> GetAllIdsByCategoryAsync(int categoryId);
+
         Task DeleteAsync(int id);
     }
 }

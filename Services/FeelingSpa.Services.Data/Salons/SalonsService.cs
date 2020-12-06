@@ -1,4 +1,7 @@
-﻿namespace FeelingSpa.Services.Data.Salons
+﻿using System.Collections;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+
+namespace FeelingSpa.Services.Data.Salons
 {
     using System;
     using System.Collections.Generic;
@@ -101,6 +104,18 @@
             salons.CategoryId = input.CategoryId;
             salons.CityId = input.CityId;
             await this.salonsRepository.SaveChangesAsync();
+        }
+
+        public IEnumerable<T> GetAllIdsByCategory<T>(int categoryId)
+        {
+            var salons = this.salonsRepository
+                .All()
+                .Where(x => x.CategoryId == categoryId)
+                .Select(x => x.Id)
+                .To<T>()
+                .ToList();
+
+            return salons;
         }
     }
 }

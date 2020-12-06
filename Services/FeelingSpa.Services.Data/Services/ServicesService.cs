@@ -42,6 +42,18 @@
             return services;
         }
 
+        public async Task<IEnumerable<int>> GetAllIdsByCategoryAsync(int categoryId)
+        {
+            ICollection<int> servicesIds =
+                await this.servicesRepository
+                    .All()
+                    .Where(x => x.CategoryId == categoryId)
+                    .OrderBy(x => x.Id)
+                    .Select(x => x.Id)
+                    .ToListAsync();
+            return servicesIds;
+        }
+
         public async Task DeleteAsync(int id)
         {
             var service =

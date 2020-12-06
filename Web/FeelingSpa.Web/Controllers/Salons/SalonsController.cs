@@ -1,4 +1,4 @@
-﻿using FeelingSpa.Services.Data.Cities;
+﻿using System.Collections.Generic;
 
 namespace FeelingSpa.Web.Controllers.Salons
 {
@@ -6,6 +6,7 @@ namespace FeelingSpa.Web.Controllers.Salons
     using System.Threading.Tasks;
 
     using FeelingSpa.Services.Data.Categories;
+    using FeelingSpa.Services.Data.Cities;
     using FeelingSpa.Services.Data.Salons;
     using FeelingSpa.Web.ViewModels.Salons;
     using Microsoft.AspNetCore.Hosting;
@@ -93,7 +94,6 @@ namespace FeelingSpa.Web.Controllers.Salons
 
         public IActionResult Edit(string id)
         {
-
             var inputModel = this.salonsService.GetById<CreateEditInputViewModel>(id);
             inputModel.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
             inputModel.CitiesItems = this.citiesService.GetAllAsKeyValuePairs();
@@ -112,6 +112,25 @@ namespace FeelingSpa.Web.Controllers.Salons
 
             await this.salonsService.UpdateAsync(id, input);
             return this.RedirectToAction(nameof(this.SingleSalon), new { id });
+        }
+
+        public IActionResult AllWhitCategory(int categoryId, int id = 1)
+        {
+
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+
+            const int ItemsPerPage = 6;
+            var viewModel = new SalonsListViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = id,
+                SalonsCount = this.salonsService.GetCount(),
+                Salons = this.salonsService.GetAllIdsByCategory<SalonInListViewModel>(categoryId),
+            };
+            return this.View(viewModel);
         }
     }
 }
