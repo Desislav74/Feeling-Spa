@@ -114,23 +114,5 @@ namespace FeelingSpa.Web.Controllers.Salons
             return this.RedirectToAction(nameof(this.SingleSalon), new { id });
         }
 
-        public IActionResult AllWhitCategory(int categoryId, int id = 1)
-        {
-
-            if (id <= 0)
-            {
-                return this.NotFound();
-            }
-
-            const int ItemsPerPage = 6;
-            var viewModel = new SalonsListViewModel
-            {
-                ItemsPerPage = ItemsPerPage,
-                PageNumber = id,
-                SalonsCount = this.salonsService.GetCount(),
-                Salons = this.salonsService.GetAllIdsByCategory<SalonInListViewModel>(categoryId),
-            };
-            return this.View(viewModel);
-        }
     }
 }

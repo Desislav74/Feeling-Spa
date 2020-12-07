@@ -19,6 +19,6 @@
 
         Task UpdateAsync(string id, CreateEditInputViewModel input);
 
-        IEnumerable<T> GetAllIdsByCategory<T>(int categoryId);
+        IEnumerable<T> GetByCategories<T>(IEnumerable<int> categoriesIds);
     }
 }

@@ -106,16 +106,15 @@ namespace FeelingSpa.Services.Data.Salons
             await this.salonsRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<T> GetAllIdsByCategory<T>(int categoryId)
+        public IEnumerable<T> GetByCategories<T>(IEnumerable<int> categoriesIds)
         {
-            var salons = this.salonsRepository
-                .All()
-                .Where(x => x.CategoryId == categoryId)
-                .Select(x => x.Id)
-                .To<T>()
-                .ToList();
+            var query = this.salonsRepository.All().AsQueryable();
+            foreach (var categoryId in categoriesIds)
+            {
+                query = query.Where(x => x.CategoryId == categoryId);
+            }
 
-            return salons;
+            return query.To<T>().ToList();
         }
     }
 }

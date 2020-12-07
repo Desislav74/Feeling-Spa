@@ -77,6 +77,13 @@ namespace FeelingSpa.Services.Data.Categories
             return categories;
         }
 
+        public IEnumerable<T> GetAllSearch<T>()
+        {
+             return this.categoriesRepository.All()
+                 .OrderByDescending(x => x.Name)
+                .To<T>().ToList();
+        }
+
         public int GetCount()
         {
             return this.categoriesRepository.All().Count();

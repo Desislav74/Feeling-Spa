@@ -1,0 +1,24 @@
+﻿@model FeelingSpa.Web.ViewModels.Search.SearchCategoriesListViewModel
+@{
+    ViewData["Title"] = "Search recipes by ingredient";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="List" method="get">
+    <div class="row">
+        @foreach (var category in Model.Categories)
+        {
+            <div class="col-1 text-center">
+                <input id="category_@category.Id"
+                       type="checkbox"
+                       name="Categories"
+                       value="@category.Id"
+                       class="form-control" />
+                <label for="category @category.Id">@category.Name</label>
+            </div>
+        }
+    </div>
+
+    <button class="btn btn-primary">Search</button>
+</form>
