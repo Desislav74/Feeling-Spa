@@ -6,9 +6,11 @@ using FeelingSpa.Web.ViewModels.SalonServices;
 namespace FeelingSpa.Web.Infrastructure.ViewComponents
 {
     public class SalonServiceDetailsViewComponent : ViewComponent
-    { private readonly ISalonServicesService salonServicesService;
+    {
+        private readonly ISalonServicesService salonServicesService;
 
-        public SalonServiceDetailsViewComponent(ISalonServicesService salonServicesService) {
+        public SalonServiceDetailsViewComponent(ISalonServicesService salonServicesService) 
+        {
             this.salonServicesService = salonServicesService;
         }
 

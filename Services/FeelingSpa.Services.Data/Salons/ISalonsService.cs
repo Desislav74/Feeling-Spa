@@ -7,7 +7,7 @@
 
     public interface ISalonsService
     {
-        Task CreateAsync(CreateSalonInputModel input, string imagePath);
+        Task<string> CreateAsync(CreateSalonInputModel input, string imagePath);
 
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 6);
 

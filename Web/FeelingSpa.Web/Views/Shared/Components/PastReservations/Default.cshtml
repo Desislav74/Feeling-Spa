@@ -1,0 +1,48 @@
+﻿@model FeelingSpa.Web.ViewModels.Reservations.ReservationsListViewModel
+@{ this.ViewData["Title"] = "Default"; }
+
+@if (@Model.Reservations.Count() > 0)
+{
+<h2>Past (@Model.Reservations.Count())</h2>
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Date and Time</th>
+                            <th scope="col">Salon</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Service</th>
+                            <th scope="col">Rate Salon</th>
+                            <th scope="col">Book Again</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var reservation in this.Model.Reservations)
+                        {
+        <tr>
+            <th scope="row">@reservation.DateTime</th>
+            <td>@reservation.SalonName</td>
+            <td>@reservation.SalonCityName, @reservation.SalonAddress</td>
+            <td>@reservation.ServiceName</td>
+            <td>
+                @if (reservation.IsSalonRatedByTheUser == true)
+                {
+<p>Already Rated!</p> }
+                    else
+                    {
+<a class="btn btn-outline-success btn-sm"
+   asp-area="" asp-controller="Reservations" asp-action="RatePastAppointment" asp-route-id="@reservation.Id">
+    Rate Salon
+</a>}
+            </td>
+            <td>
+                <div class="button elements_button">
+                    <a asp-area="" asp-controller="Reservations" asp-action="MakeReservation" asp-route-salonId="@reservation.SalonId" asp-route-serviceId="@reservation.ServiceId">
+                        <span>book again</span><span>book again</span>
+                    </a>
+                </div>
+            </td>
+        </tr>}
+                    </tbody>
+                </table>}
+

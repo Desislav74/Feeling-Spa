@@ -1,9 +1,11 @@
 ﻿
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using FeelingSpa.Data.Models;
 using FeelingSpa.Services.Data.Reservations;
 using FeelingSpa.Services.Data.SalonServices;
+using FeelingSpa.Services.DateTimeParser;
 using FeelingSpa.Web.ViewModels.Reservations;
 using FeelingSpa.Web.ViewModels.SalonServices;
 using Microsoft.AspNetCore.Identity;
@@ -16,12 +18,14 @@ namespace FeelingSpa.Web.Controllers.Reservations
         private readonly IReservationsService reservationsService;
         private readonly ISalonServicesService salonServicesService;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IDateTimeParserService dateTimeParserService;
 
-        public ReservationsController(IReservationsService reservationsService, ISalonServicesService salonServicesService, UserManager<ApplicationUser> userManager)
+        public ReservationsController(IReservationsService reservationsService, ISalonServicesService salonServicesService, UserManager<ApplicationUser> userManager, IDateTimeParserService dateTimeParserService)
         {
             this.reservationsService = reservationsService;
             this.salonServicesService = salonServicesService;
             this.userManager = userManager;
+            this.dateTimeParserService = dateTimeParserService;
         }
 
         public async Task<IActionResult> DetailsReservation()
@@ -40,10 +44,6 @@ namespace FeelingSpa.Web.Controllers.Reservations
         {
             var salonService =
                 await this.salonServicesService.GetByIdAsync<SalonServicesSimpleViewModel>(salonId, serviceId);
-            if (salonService == null || !salonService.Available)
-            {
-                return this.View("UnavailableService");
-            }
 
             var viewModel = new ReservationInputModel()
             {
@@ -51,6 +51,33 @@ namespace FeelingSpa.Web.Controllers.Reservations
                 ServiceId = serviceId,
             };
             return this.View(viewModel);
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> MakeAnAppointment(ReservationInputModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.RedirectToAction("MakeReservation", new { input.SalonId, input.ServiceId });
+            }
+
+            DateTime dateTime;
+            try
+            {
+                dateTime = this.dateTimeParserService.ConvertStrings(input.Date, input.Time);
+            }
+            catch (System.Exception)
+            {
+                return this.RedirectToAction("MakeReservation", new { input.SalonId, input.ServiceId });
+            }
+
+            var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+            var userId = await this.userManager.GetUserIdAsync(user);
+
+            await this.reservationsService.AddAsync(userId, input.SalonId, input.ServiceId, dateTime);
+
+            return this.RedirectToAction("DetailsReservation");
         }
     }
 }

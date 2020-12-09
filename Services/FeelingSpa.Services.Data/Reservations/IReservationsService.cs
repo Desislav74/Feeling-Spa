@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FeelingSpa.Services.Data.Reservations
@@ -10,5 +11,9 @@ namespace FeelingSpa.Services.Data.Reservations
         Task<IEnumerable<T>> GetAllAsync<T>();
 
         Task<IEnumerable<T>> GetReservationsByUserAsync<T>(string userId);
+
+        Task<IEnumerable<T>> GetPastByUserAsync<T>(string userId);
+
+        Task AddAsync(string userId, string salonId, int serviceId, DateTime dateTime);
     }
 }

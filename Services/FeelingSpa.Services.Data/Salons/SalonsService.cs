@@ -27,7 +27,7 @@ namespace FeelingSpa.Services.Data.Salons
             this.salonsRepository = salonsRepository;
         }
 
-        public async Task CreateAsync(CreateSalonInputModel input, string imagePath)
+        public async Task<string> CreateAsync(CreateSalonInputModel input, string imagePath)
         {
             var salon = new Salon
             {
@@ -60,6 +60,7 @@ namespace FeelingSpa.Services.Data.Salons
 
             await this.salonsRepository.AddAsync(salon);
             await this.salonsRepository.SaveChangesAsync();
+            return salon.Id;
         }
 
         public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 6)

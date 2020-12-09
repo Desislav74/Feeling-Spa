@@ -2,7 +2,9 @@
 using FeelingSpa.Services.Data.Cities;
 using FeelingSpa.Services.Data.Reservations;
 using FeelingSpa.Services.Data.Salons;
+using FeelingSpa.Services.Data.SalonServices;
 using FeelingSpa.Services.Data.Services;
+using FeelingSpa.Services.DateTimeParser;
 
 namespace FeelingSpa.Web
 {
@@ -75,6 +77,8 @@ namespace FeelingSpa.Web
             services.AddTransient<ISalonsService, SalonsService>();
             services.AddTransient<IServicesService, ServicesService>();
             services.AddTransient<IReservationsService, ReservationsService>();
+            services.AddTransient<ISalonServicesService, SalonServicesService>();
+            services.AddTransient<IDateTimeParserService, DateTimeParserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

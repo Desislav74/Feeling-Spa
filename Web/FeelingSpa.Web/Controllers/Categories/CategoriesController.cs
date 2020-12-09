@@ -78,7 +78,7 @@ namespace FeelingSpa.Web.Controllers.Categories
         {
             await this.categoriesService.DeleteAsync(id);
 
-            return this.RedirectToAction("/");
+            return this.Redirect("/Categories/All");
         }
 
         public IActionResult Edit(int id)

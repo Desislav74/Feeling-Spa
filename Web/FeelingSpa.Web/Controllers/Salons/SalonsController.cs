@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using FeelingSpa.Data.Models;
+using FeelingSpa.Services.Data.SalonServices;
+using FeelingSpa.Services.Data.Services;
 
 namespace FeelingSpa.Web.Controllers.Salons
 {
@@ -18,13 +21,17 @@ namespace FeelingSpa.Web.Controllers.Salons
         private readonly ISalonsService salonsService;
         private readonly IWebHostEnvironment environment;
         private readonly ICitiesService citiesService;
+        private readonly IServicesService servicesService;
+        private readonly ISalonServicesService salonServicesService;
 
-        public SalonsController(ICategoriesService categoriesService, ISalonsService salonsService, IWebHostEnvironment environment, ICitiesService citiesService)
+        public SalonsController(ICategoriesService categoriesService, ISalonsService salonsService, IWebHostEnvironment environment, ICitiesService citiesService, IServicesService servicesService, ISalonServicesService salonServicesService)
         {
             this.categoriesService = categoriesService;
             this.salonsService = salonsService;
             this.environment = environment;
             this.citiesService = citiesService;
+            this.servicesService = servicesService;
+            this.salonServicesService = salonServicesService;
         }
 
         public IActionResult Create()
@@ -47,7 +54,9 @@ namespace FeelingSpa.Web.Controllers.Salons
 
             try
             {
-                await this.salonsService.CreateAsync(input, $"{this.environment.WebRootPath}/images");
+                var salonId = await this.salonsService.CreateAsync(input, $"{this.environment.WebRootPath}/images");
+                var servicesIds = await this.servicesService.GetAllIdsByCategoryAsync(input.CategoryId);
+                await this.salonServicesService.CreateAsync(salonId, servicesIds);
             }
             catch (Exception ex)
             {
