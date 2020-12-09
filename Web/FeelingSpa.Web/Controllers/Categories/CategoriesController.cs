@@ -1,4 +1,5 @@
-﻿using FeelingSpa.Web.ViewModels.Salons;
+﻿using FeelingSpa.Web.ViewModels.Categories;
+using FeelingSpa.Web.ViewModels.Salons;
 
 namespace FeelingSpa.Web.Controllers.Categories
 {
@@ -66,10 +67,10 @@ namespace FeelingSpa.Web.Controllers.Categories
             return this.View(viewModel);
         }
 
-        public IActionResult CategoryById(int id)
+        public IActionResult SingleCategory(int id)
         {
             var viewModel = this.categoriesService.GetById<CategoryInListViewModel>(id);
-            return this.Redirect("/");
+            return this.View(viewModel);
         }
 
         [HttpPost]
@@ -78,6 +79,24 @@ namespace FeelingSpa.Web.Controllers.Categories
             await this.categoriesService.DeleteAsync(id);
 
             return this.RedirectToAction("/");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var inputModel = this.categoriesService.GetById<CreateEditCategoryInputModel>(id);
+            return this.View(inputModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, CreateEditCategoryInputModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            await this.categoriesService.UpdateAsync(id, input);
+            return this.RedirectToAction(nameof(this.SingleCategory), new { id });
         }
     }
 }

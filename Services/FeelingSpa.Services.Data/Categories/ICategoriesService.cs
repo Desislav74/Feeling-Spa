@@ -1,4 +1,6 @@
-﻿namespace FeelingSpa.Services.Data.Categories
+﻿using FeelingSpa.Web.ViewModels.Categories;
+
+namespace FeelingSpa.Services.Data.Categories
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -14,6 +16,8 @@
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 6);
 
         IEnumerable<T> GetAllSearch<T>();
+
+        Task UpdateAsync(int id, CreateEditCategoryInputModel input);
 
         int GetCount();
 

@@ -1,4 +1,6 @@
 ﻿using FeelingSpa.Services.Mapping;
+using FeelingSpa.Web.ViewModels.Categories;
+using FeelingSpa.Web.ViewModels.Salons;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
@@ -106,6 +108,14 @@ namespace FeelingSpa.Services.Data.Categories
                     .Where(x => x.Id == id)
                     .FirstOrDefaultAsync();
             this.categoriesRepository.Delete(category);
+            await this.categoriesRepository.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(int id, CreateEditCategoryInputModel input)
+        {
+            var categories = this.categoriesRepository.All().FirstOrDefault(x => x.Id == id);
+            categories.Name = input.Name;
+            categories.Description = input.Description;
             await this.categoriesRepository.SaveChangesAsync();
         }
     }
