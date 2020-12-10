@@ -72,8 +72,9 @@ namespace FeelingSpa.Web.Controllers.Reservations
                 return this.RedirectToAction("MakeReservation", new { input.SalonId, input.ServiceId });
             }
 
-            var user = await this.userManager.GetUserAsync(this.HttpContext.User);
-            var userId = await this.userManager.GetUserIdAsync(user);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+            //var userId = await this.userManager.GetUserIdAsync(user);
 
             await this.reservationsService.AddAsync(userId, input.SalonId, input.ServiceId, dateTime);
 
