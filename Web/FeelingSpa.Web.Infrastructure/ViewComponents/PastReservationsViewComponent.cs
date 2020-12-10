@@ -18,19 +18,20 @@ namespace FeelingSpa.Web.Infrastructure.ViewComponents
         {
             this.reservationsService = reservationsService;
             this.userManager = userManager;
+        }
 
-            async Task<IViewComponentResult> InvokeAsync()
-            {
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
                 var user = await this.userManager.GetUserAsync(this.HttpContext.User);
                 var userId = await this.userManager.GetUserIdAsync(user);
 
                 var viewModel = new ReservationsListViewModel()
                 {
-                    Reservations = await this.reservationsService.GetPastByUserAsync<ReservationViewModel>(userId),
+                    Reservations = 
+                        await this.reservationsService.GetPastByUserAsync<ReservationViewModel>(userId),
                 };
 
                 return this.View(viewModel);
-            }
         }
     }
 }

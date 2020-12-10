@@ -55,7 +55,7 @@ namespace FeelingSpa.Web.Controllers.Reservations
 
         [HttpPost]
 
-        public async Task<IActionResult> MakeAnAppointment(ReservationInputModel input)
+        public async Task<IActionResult> MakeReservation(ReservationInputModel input)
         {
             if (!this.ModelState.IsValid)
             {

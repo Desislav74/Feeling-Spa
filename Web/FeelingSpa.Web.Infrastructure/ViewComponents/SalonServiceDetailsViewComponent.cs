@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using FeelingSpa.Services.Data.SalonServices;
-using FeelingSpa.Web.ViewModels.SalonServices;
-
-namespace FeelingSpa.Web.Infrastructure.ViewComponents
+﻿namespace FeelingSpa.Web.Infrastructure.ViewComponents
 {
+    using System.Threading.Tasks;
+
+    using FeelingSpa.Services.Data.SalonServices;
+    using FeelingSpa.Web.ViewModels.SalonServices;
+    using Microsoft.AspNetCore.Mvc;
+
     public class SalonServiceDetailsViewComponent : ViewComponent
     {
         private readonly ISalonServicesService salonServicesService;
