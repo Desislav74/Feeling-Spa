@@ -20,5 +20,7 @@
         Task UpdateAsync(string id, CreateEditInputViewModel input);
 
         IEnumerable<T> GetByCategories<T>(IEnumerable<int> categoriesIds);
+
+        Task RateSalonAsync(string id, int rateValue);
     }
 }

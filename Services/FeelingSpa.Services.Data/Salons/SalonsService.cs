@@ -117,5 +117,25 @@ namespace FeelingSpa.Services.Data.Salons
 
             return query.To<T>().ToList();
         }
+
+        public async Task RateSalonAsync(string id, int rateValue)
+        {
+            var salon =
+                await this.salonsRepository
+                    .All()
+                    .Where(x => x.Id == id)
+                    .FirstOrDefaultAsync();
+
+            var oldRating = salon.Rating;
+            var oldRatersCount = salon.RatingCount;
+
+            var newRatersCount = oldRatersCount + 1;
+            var newRating = (oldRating + rateValue) / newRatersCount;
+
+            salon.Rating = newRating;
+            salon.RatingCount = newRatersCount;
+
+            await this.salonsRepository.SaveChangesAsync();
+        }
     }
 }

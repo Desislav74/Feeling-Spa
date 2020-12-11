@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using FeelingSpa.Data.Models;
 using FeelingSpa.Services.Data.Reservations;
+using FeelingSpa.Services.Data.Salons;
 using FeelingSpa.Services.Data.SalonServices;
 using FeelingSpa.Services.DateTimeParser;
 using FeelingSpa.Web.ViewModels.Reservations;
@@ -19,13 +20,15 @@ namespace FeelingSpa.Web.Controllers.Reservations
         private readonly ISalonServicesService salonServicesService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IDateTimeParserService dateTimeParserService;
+        private readonly ISalonsService salonsService;
 
-        public ReservationsController(IReservationsService reservationsService, ISalonServicesService salonServicesService, UserManager<ApplicationUser> userManager, IDateTimeParserService dateTimeParserService)
+        public ReservationsController(IReservationsService reservationsService, ISalonServicesService salonServicesService, UserManager<ApplicationUser> userManager, IDateTimeParserService dateTimeParserService, ISalonsService salonsService)
         {
             this.reservationsService = reservationsService;
             this.salonServicesService = salonServicesService;
             this.userManager = userManager;
             this.dateTimeParserService = dateTimeParserService;
+            this.salonsService = salonsService;
         }
 
         public async Task<IActionResult> DetailsReservation()
@@ -73,6 +76,7 @@ namespace FeelingSpa.Web.Controllers.Reservations
             }
 
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
             await this.reservationsService.AddAsync(userId, input.SalonId, input.ServiceId, dateTime);
 
             return this.RedirectToAction("DetailsReservation");
@@ -92,6 +96,32 @@ namespace FeelingSpa.Web.Controllers.Reservations
             await this.reservationsService.DeleteAsync(id);
 
             return this.RedirectToAction("DetailsReservation");
+        }
+
+        public async Task<IActionResult> RatePastReservation(string id)
+        {
+            var viewModel = await this.reservationsService.GetByIdAsync<ReservationRatingViewModel>(id);
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RateSalon(ReservationRatingViewModel rating)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.RedirectToAction("RatePastReservation", new { id = rating.Id });
+            }
+
+            if (rating.IsSalonRatedByTheUser == true)
+            {
+                return this.RedirectToAction("RatePastReservation", new { id = rating.Id });
+            }
+
+            await this.reservationsService.RateReservationAsync(rating.Id);
+            await this.salonsService.RateSalonAsync(rating.SalonId, rating.RateValue);
+
+            return this.RedirectToAction("SingleSalon", "Salons", new { id = rating.SalonId });
         }
     }
 }

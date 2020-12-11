@@ -17,5 +17,7 @@ namespace FeelingSpa.Services.Data.Reservations
         Task AddAsync(string userId, string salonId, int serviceId, DateTime dateTime);
 
         Task DeleteAsync(string id);
+
+        Task RateReservationAsync(string id);
     }
 }

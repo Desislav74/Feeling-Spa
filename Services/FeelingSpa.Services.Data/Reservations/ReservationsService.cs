@@ -89,5 +89,16 @@ namespace FeelingSpa.Services.Data.Reservations
             this.reservationsRepository.Delete(appointment);
             await this.reservationsRepository.SaveChangesAsync();
         }
+
+        public async Task RateReservationAsync(string id)
+        {
+            var appointment =
+                await this.reservationsRepository
+                    .All()
+                    .Where(x => x.Id == id)
+                    .FirstOrDefaultAsync();
+            appointment.IsSalonRatedByUser = true;
+            await this.reservationsRepository.SaveChangesAsync();
+        }
     }
 }
