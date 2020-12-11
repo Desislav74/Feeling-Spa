@@ -1,10 +1,11 @@
 ﻿@model FeelingSpa.Web.ViewModels.Reservations.ReservationsListViewModel
 @{
-    this.ViewData["Title"] = "Reservations";
+    this.ViewData["Title"] = "Your Reservations";
 }
 
 
 <table class="table table-bordered table-striped">
+    <h3>@this.ViewData["Title"]</h3>
     <thead class="thead-light">
         <tr>
             <th scope="col">Date and Time</th>
@@ -23,10 +24,12 @@
                 <td>
                     @if (reservation.Confirmed == true)
                     {
-                        <span class="badge badge-success">Confirmed</span> }
+                        <span class="badge badge-success">Confirmed</span>
+                    }
                     else if (reservation.Confirmed == false)
                     {
-                        <span class="badge badge-danger">Declined</span> }
+                        <span class="badge badge-danger">Declined</span>
+                    }
                     else
                     {
                         <span class="badge badge-secondary">Pending</span>}
@@ -36,12 +39,12 @@
                 <td>@reservation.ServiceName</td>
                 <td>
                     <a class="btn btn-outline-danger btn-sm"
-                       asp-area="" asp-controller="Reservations" asp-action="Cancel" asp-route-id="@reservation.Id">
+                       asp-area="" asp-controller="Reservations" asp-action="CanselReservation" asp-route-id="@reservation.Id">
                         Cancel
                     </a>
                 </td>
             </tr>
-}
+        }
     </tbody>
 </table>
 

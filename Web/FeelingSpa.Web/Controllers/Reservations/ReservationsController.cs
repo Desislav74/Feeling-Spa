@@ -73,10 +73,23 @@ namespace FeelingSpa.Web.Controllers.Reservations
             }
 
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //var user = await this.userManager.GetUserAsync(this.HttpContext.User);
-            //var userId = await this.userManager.GetUserIdAsync(user);
-
             await this.reservationsService.AddAsync(userId, input.SalonId, input.ServiceId, dateTime);
+
+            return this.RedirectToAction("DetailsReservation");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CanselReservation(string id)
+        {
+            var viewModel = await this.reservationsService.GetByIdAsync<ReservationViewModel>(id);
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteReservation(string id)
+        {
+            await this.reservationsService.DeleteAsync(id);
 
             return this.RedirectToAction("DetailsReservation");
         }

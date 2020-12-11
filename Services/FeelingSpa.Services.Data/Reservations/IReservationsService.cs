@@ -15,5 +15,7 @@ namespace FeelingSpa.Services.Data.Reservations
         Task<IEnumerable<T>> GetPastByUserAsync<T>(string userId);
 
         Task AddAsync(string userId, string salonId, int serviceId, DateTime dateTime);
+
+        Task DeleteAsync(string id);
     }
 }
