@@ -27,6 +27,6 @@
 
         public bool? Confirmed { get; set; }
 
-        public bool? IsSalonRatedByTheUser { get; set; }
+        public bool? IsSalonRatedByUser { get; set; }
     }
 }
