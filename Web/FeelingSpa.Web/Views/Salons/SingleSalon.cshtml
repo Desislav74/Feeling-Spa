@@ -1,4 +1,5 @@
 ﻿
+@using FeelingSpa.Web.ViewModels.Reservations
 @model FeelingSpa.Web.ViewModels.Salons.SalonWhitServicesViewModel
 @{
     this.ViewData["Title"] = "Salon"+ Model.Name; 
@@ -53,7 +54,7 @@
                 <div class="tab_list">
                     <ul>
                         @foreach (var service in Model.Services.Where(x => x.Available == true))
-                        {
+                         {
                             <li>
                                 <div class="tab_list_title">@service.ServiceName</div>
                                 <div class="tab_list_text">
@@ -66,7 +67,7 @@
                                     </a>
                                 </div>
                             </li>
-                        }
+                         }
                     </ul>
                 </div>
             </div>

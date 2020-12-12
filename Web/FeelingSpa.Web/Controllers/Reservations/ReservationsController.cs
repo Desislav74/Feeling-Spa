@@ -113,7 +113,7 @@ namespace FeelingSpa.Web.Controllers.Reservations
                 return this.RedirectToAction("RatePastReservation", new { id = rating.Id });
             }
 
-            if (rating.IsSalonRatedByTheUser == true)
+            if (rating.IsSalonRatedByUser == true)
             {
                 return this.RedirectToAction("RatePastReservation", new { id = rating.Id });
             }

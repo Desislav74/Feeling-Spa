@@ -1,4 +1,5 @@
-﻿@model FeelingSpa.Web.ViewModels.Reservations.ReservationsListViewModel
+﻿@using FeelingSpa.Web.ViewModels.Reservations
+@model FeelingSpa.Web.ViewModels.Reservations.ReservationsListViewModel
 @{
     this.ViewData["Title"] = "Your Reservations";
 }
@@ -19,31 +20,37 @@
     <tbody>
         @foreach (var reservation in this.Model.Reservations)
         {
-            <tr>
-                <th scope="row">@reservation.DateTime.ToString("f")</th>
-                <td>
-                    @if (reservation.Confirmed == true)
-                    {
-                        <span class="badge badge-success">Confirmed</span>
-                    }
-                    else if (reservation.Confirmed == false)
-                    {
-                        <span class="badge badge-danger">Declined</span>
-                    }
-                    else
-                    {
-                        <span class="badge badge-secondary">Pending</span>}
-                </td>
-                <td>@reservation.SalonName</td>
-                <td>@reservation.SalonCityName, @reservation.SalonAddress</td>
-                <td>@reservation.ServiceName</td>
-                <td>
-                    <a class="btn btn-outline-danger btn-sm"
-                       asp-area="" asp-controller="Reservations" asp-action="CanselReservation" asp-route-id="@reservation.Id">
-                        Cancel
-                    </a>
-                </td>
-            </tr>
+        <tr>
+            <th scope="row">@reservation.DateTime.ToString("f")</th>
+            <td>
+                @if (reservation.Confirmed == true)
+                {
+                    <span class="badge badge-success">Confirmed</span>
+                }
+                else if (reservation.Confirmed == false)
+                {
+                    <span class="badge badge-danger">Declined</span>
+                }
+                else
+                {
+                    <span class="badge badge-secondary">Pending</span>}
+            </td>
+            <td>@reservation.SalonName</td>
+            <td>@reservation.SalonCityName, @reservation.SalonAddress</td>
+            <td>@reservation.ServiceName</td>
+            <td>
+                <a class="btn btn-outline-success btn-sm"
+                   asp-area="" asp-controller="Reservations" asp-action="CanselReservation" asp-route-id="@reservation.Id">
+                    Cancel
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-outline- btn-sm"
+                   asp-area="" asp-controller="Reservations" asp-action="RatePastReservation" asp-route-id="@reservation.Id">
+                    Cancel
+                </a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
@@ -71,7 +78,7 @@
                 </li>
             </ol>
             <ul>
-                
+
                 <li>
                     <div class="button button-large button_1 elements_button mt-4">
                         <a asp-area="" asp-controller="Salons" asp-action="All">

@@ -21,7 +21,7 @@
 
         public string SalonImageUrl { get; set; }
 
-        public bool? IsSalonRatedByTheUser { get; set; }
+        public bool? IsSalonRatedByUser { get; set; }
 
         [Required]
         [Range(1, 5, ErrorMessage = "Please choose a valid number of stars from 1 to 5.")]
