@@ -137,5 +137,13 @@ namespace FeelingSpa.Services.Data.Salons
 
             await this.salonsRepository.SaveChangesAsync();
         }
+
+        public IEnumerable<T> GetRandom<T>(int count)
+        {
+            return this.salonsRepository.All()
+                .OrderBy(x => Guid.NewGuid())
+                .Take(count)
+                .To<T>().ToList();
+        }
     }
 }

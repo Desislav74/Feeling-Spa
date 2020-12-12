@@ -1,4 +1,8 @@
-﻿namespace FeelingSpa.Web.Controllers
+﻿using FeelingSpa.Services.Data.Salons;
+using FeelingSpa.Web.ViewModels.Home;
+using IndexViewModel = FeelingSpa.Web.ViewModels.Administration.Dashboard.IndexViewModel;
+
+namespace FeelingSpa.Web.Controllers
 {
     using System.Diagnostics;
 
@@ -8,9 +12,20 @@
 
     public class HomeController : BaseController
     {
+        private readonly ISalonsService salonsService;
+
+        public HomeController(ISalonsService salonsService)
+        {
+            this.salonsService = salonsService;
+        }
+
         public IActionResult Index()
         {
-            return this.View();
+            var viewModel = new SalonsIndexViewModel
+            {
+                RandomSalons = this.salonsService.GetRandom<HomePageSalonsViewModel>(10),
+            };
+            return this.View(viewModel);
         }
 
         public IActionResult Privacy()
