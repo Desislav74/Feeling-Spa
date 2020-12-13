@@ -6,27 +6,37 @@
 
 <div class="row row-eq-height">
     <!-- Info Box -->
-    <div class="col-lg-4 info_box_col">
+    <div class="col-md-8 offset-2">
         <div class="info_box">
-            <div class="info_image"><img src="@Model.ImageUrl" alt=""></div>
+            <div class="info_image"><img src="@Model.ImageUrl" width="1000" height="400" alt=""></div>
             <div class="info_content">
                 <div class="info_title">@Model.Name</div>
                 <div class="info_text">Address: <strong>@Model.Description</strong></div>
                 <div class="info_text">
-                    <ul>
-                        <li class="single-meta">
-                            <a asp-controller="Categories" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">Edit</a>
-                        </li>
-                        <li class="single-meta">
-                            <form method="post" asp-action="DeleteCategory" id="deleteForm" asp-route-id="@Model.Id">
-                            </form>
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                        </li>
+                    @*<ul>
+                            <li class="single-meta">
+                                <a asp-controller="Categories" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">Edit</a>
+                            </li>
+                            <li class="single-meta">
+                                <form method="post" asp-action="DeleteCategory" id="deleteForm" asp-route-id="@Model.Id">
+                                </form>
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                            </li>
 
-                        <li class="single-meta">
-                            <button class="btn btn-warning" onclick="window.print()">Print</button>
-                        </li>
-                    </ul>
+                            <li class="single-meta">
+                                <button class="btn btn-warning" onclick="window.print()">Print</button>
+                            </li>
+                        </ul>*@
+
+                    <div class="btn-group btn-group-lg" role="group" aria-label="...">
+                        <a asp-controller="Categories" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">Edit</a>
+
+                        <form method="post" asp-action="DeleteCategory" id="deleteForm" asp-route-id="@Model.Id">
+                        </form>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+
+                        <button class="btn btn-warning" onclick="window.print()">Print</button>
+                    </div>
                 </div>
             </div>
         </div>

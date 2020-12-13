@@ -3,11 +3,7 @@
 <h1>@this.ViewData["Title"]</h1>
 <link href="/lib/bootstrap/dist/css/bootstrap.css?v=A47OwxL_nAN0ydiDFTSGX7ftbfTJTKgiJ0zqCuTPDh4" rel="stylesheet" />
 <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css?v=eZrrJcwDc_3uDhsdt61sL2oOBY362qM3lon1gyExkL0" rel="stylesheet" />
-@*<link href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css?v=rpqt6QcOMYvxTPbUb1pw0bgIDRjFYmZTJaqO186aqbk" rel="stylesheet" />
-<link href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css?v=ul93KPKvcMymXHwqX1Q-oa1Ugv0lx5DRq1aeOI9yYoI" rel="stylesheet" />
-<link href="/plugins/OwlCarousel2-2.2.1/animate.css?v=JGeMBP9vCje211qAXxdJz-fZFXJK2JDuRKCnE8j5eu0" rel="stylesheet" />*@
-<!--<link href="/css/site.css?v=prTMoiH4SfzYzeTcIHTlX1MOZMN6j-PpP3yVvAeZk2E" rel="stylesheet" />
-<link href="/css/responsive.css?v=c-y01wzjy-FAWq1dGC88aXewH5KHSAQ4CXfnI-OV_nQ" rel="stylesheet" />-->
+<link href="/css/responsive.css?v=c-y01wzjy-FAWq1dGC88aXewH5KHSAQ4CXfnI-OV_nQ" rel="stylesheet" />
 @if (Model.IsSalonRatedByUser == true)
 {
     <h3>You already rated the Salon for this reservation!</h3>
@@ -20,61 +16,63 @@
 }
 else
 {
-    <div class="row row-eq-height">
-        <!-- Info Box -->
-        <div class="col-lg-4 info_box_col">
-            <div class="info_box">
-                <div class="info_image"><img src="@Model.SalonImageUrl" alt=""></div>
-                <div class="info_content">
-                    <div class="info_title">@Model.SalonName</div>
-                    <div class="info_text">Category: <strong>@Model.SalonCategoryName</strong></div>
-                    <div class="info_text">City: <strong>@Model.SalonCityName</strong></div>
-                    <div class="info_text">Address: <strong>@Model.SalonAddress</strong></div>
+    <div class="col-md-12">
+        <div class="row">
+            <!-- Info Box -->
+            <div class="col-md-6">
+                <div class="info_box">
+                    <div class="info_image"><img src="@Model.SalonImageUrl" width="1000" height="300" alt=""></div>
+                    <div class="info_content">
+                        <div class="info_title">@Model.SalonName</div>
+                        <div class="info_text">Category: <strong>@Model.SalonCategoryName</strong></div>
+                        <div class="info_text">City: <strong>@Model.SalonCityName</strong></div>
+                        <div class="info_text">Address: <strong>@Model.SalonAddress</strong></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Panel -->
-        <div class="col-lg-6">
-            <h2>
-                How would you rate
-                <br/>experience at this salon:
-            </h2>
-            <div class="col-lg-6">
-                <form method="post">
-                    <div class="row my-3">
-                        <p>Choose here:</p>
-                    </div>
-                    <div class="row my-3">
-                        <div class="star-rating">
-                            <span class="fa fa-star-o" data-rating="1"></span>
-                            <span class="fa fa-star-o" data-rating="2"></span>
-                            <span class="fa fa-star-o" data-rating="3"></span>
-                            <span class="fa fa-star-o" data-rating="4"></span>
-                            <span class="fa fa-star-o" data-rating="5"></span>
-                            <input type="hidden" class="rating-value form-control form-control-sm" id="selectedRating" value="0.0"/>
-                            <input type="number" class="form-control form-control-sm disabled" value="0"
-                                   asp-for="@Model.RateValue" required readonly/>
-                            <span asp-validation-for="RateValue" class="text-danger"></span>
+            <!-- Panel -->
+            <div class="col-md-6">
+                <h2>
+                    How would you rate
+                    <br />experience at this salon:
+                </h2>
+                <div class="col-lg-6">
+                    <form method="post">
+                        <div class="row my-3">
+                            <p>Choose here:</p>
                         </div>
-                    </div>
-                    <div>
-                        <input asp-for="@Model.SalonId" value="@Model.SalonId" class="form-control" hidden>
-                        <input asp-for="@Model.Id" value="@Model.Id" class="form-control" hidden>
-                    </div>
-                    <div class="row my-3">
-                        <button type="submit" class="btn btn-outline-success"
-                                asp-area="" asp-controller="Reservations" asp-action="RateSalon">
-                            Rate!
-                        </button>
-                    </div>
-                    <div class="row my-3">
+                        <div class="row my-3">
+                            <div class="star-rating">
+                                <span class="fa fa-star-o" data-rating="1"></span>
+                                <span class="fa fa-star-o" data-rating="2"></span>
+                                <span class="fa fa-star-o" data-rating="3"></span>
+                                <span class="fa fa-star-o" data-rating="4"></span>
+                                <span class="fa fa-star-o" data-rating="5"></span>
+                                <input type="hidden" class="rating-value form-control form-control-sm" id="selectedRating" value="0.0" />
+                                <input type="number" class="form-control form-control-sm disabled" value="0"
+                                       asp-for="@Model.RateValue" required readonly />
+                                <span asp-validation-for="RateValue" class="text-danger"></span>
+                            </div>
+                        </div>
                         <div>
-                            <a class="btn btn-outline-dark" asp-area="" asp-controller="Reservations" asp-action="DetailsReservation">
-                                Not Now
-                            </a>
+                            <input asp-for="@Model.SalonId" value="@Model.SalonId" class="form-control" hidden>
+                            <input asp-for="@Model.Id" value="@Model.Id" class="form-control" hidden>
                         </div>
-                    </div>
-                </form>
+                        <div class="row my-3">
+                            <button type="submit" class="btn btn-outline-success"
+                                    asp-area="" asp-controller="Reservations" asp-action="RateSalon">
+                                Rate!
+                            </button>
+                        </div>
+                        <div class="row my-3">
+                            <div>
+                                <a class="btn btn-outline-dark" asp-area="" asp-controller="Reservations" asp-action="DetailsReservation">
+                                    Not Now
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -87,7 +85,8 @@ else
 <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js?v=hPYqnq606IVznFwz1LW0eYgPSxG9O_wyIZT9gK9NvWQ"></script>
 <script src="/plugins/easing/easing.js?v=zaSzizngaaooE0hoRzhTNtQo0koMZ3NFlBFhADKHdOc"></script>
 <script src="/plugins/parallax-js-master/parallax.min.js?v=cNb9ArVGKhXkedowZK9xRxCpr6qqck5JvCAsuMzJlPw"></script>
-<script src="/js/site.js?v=z0FWh-17-hOiz-QHgxxe7d_KcvNzlf47enoxVRveekE"></script> <script src="/lib/jquery/dist/jquery.js?v=WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU"></script>
+<script src="/js/site.js?v=z0FWh-17-hOiz-QHgxxe7d_KcvNzlf47enoxVRveekE"></script>
+<script src="/lib/jquery/dist/jquery.js?v=WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU"></script>
 <script src="/lib/jquery-validation/dist/jquery.validate.js?v=83vfPHCYD9yNhsVUj-Le81R0ZZs_lqBT6iuRU0YMHtM"></script>
 <script src="/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js?v=XNNC8ESw29iopRLukVRazlP44TxnjGmEQanHJ5kHmtk"></script>
 <script src="/js/popper.js?v=GCNxnXyZ075dTOTulxSI3DBgNNmSjLvqM95FLyy0a4c"></script>
@@ -95,11 +94,12 @@ else
 <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js?v=hPYqnq606IVznFwz1LW0eYgPSxG9O_wyIZT9gK9NvWQ"></script>
 <script src="/plugins/easing/easing.js?v=zaSzizngaaooE0hoRzhTNtQo0koMZ3NFlBFhADKHdOc"></script>
 <script src="/plugins/parallax-js-master/parallax.min.js?v=cNb9ArVGKhXkedowZK9xRxCpr6qqck5JvCAsuMzJlPw"></script>
-<script src="/js/site.js?v=z0FWh-17-hOiz-QHgxxe7d_KcvNzlf47enoxVRveekE"></script>                                                      
+<script src="/js/site.js?v=z0FWh-17-hOiz-QHgxxe7d_KcvNzlf47enoxVRveekE"></script>
 
 @section Scripts {
     <script src="~/js/rating-responsive.js" asp-append-version="true"></script>
-    <script type="text/javascript">$.validator.setDefaults({
+    <script type="text/javascript">
+    $.validator.setDefaults({
             ignore: ""
         })</script>
 }

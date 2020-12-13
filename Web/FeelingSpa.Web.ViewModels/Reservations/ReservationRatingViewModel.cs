@@ -1,11 +1,14 @@
-﻿namespace FeelingSpa.Web.ViewModels.Reservations
+﻿using System.Linq;
+using AutoMapper;
+
+namespace FeelingSpa.Web.ViewModels.Reservations
 {
     using System.ComponentModel.DataAnnotations;
 
     using FeelingSpa.Data.Models;
     using FeelingSpa.Services.Mapping;
 
-    public class ReservationRatingViewModel : IMapFrom<Reservation>
+    public class ReservationRatingViewModel : IMapFrom<Reservation>, IHaveCustomMappings
     {
         public string Id { get; set; }
 
@@ -28,5 +31,13 @@
         [Required]
         [Range(1, 5, ErrorMessage = "Please choose a valid number of stars from 1 to 5.")]
         public int RateValue { get; set; }
+
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<Reservation, ReservationRatingViewModel>()
+                .ForMember(x => x.SalonImageUrl, opt =>
+                    opt.MapFrom(x =>
+                        "/images/salons/" + x.Salon.Images.FirstOrDefault().Id + "." + x.Salon.Images.FirstOrDefault().Extension));
+        }
     }
 }

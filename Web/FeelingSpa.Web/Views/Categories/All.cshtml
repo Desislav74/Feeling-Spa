@@ -5,28 +5,47 @@
 }
 <h1 class="text-center">@this.ViewData["Title"]</h1>
 <hr />
-<div class="row">
-    @foreach (var category in this.Model.Categories)
-    {
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@category.ImageUrl" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="mt-0"><a asp-action="SingleCategory" asp-route-id="@category.Id"></a></h5>
-                    <h5 class="card-title">@category.Name</h5>
-                    <h5 class="card-title">@category.Id</h5>
-                    <p class="card-text">@category.Description</p>
-                    <div type="button" class="btn btn-primary">
-                        <a asp-area="" asp-controller="Categories" asp-action="SingleCategory" asp-route-id="@category.Id">
-                            <span class="text-warning"> <h7> See Categories </h7> </span>
-                        </a>
+@*<div class="row">
+        @foreach (var category in this.Model.Categories)
+        {
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@category.ImageUrl" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="mt-0"><a asp-action="SingleCategory" asp-route-id="@category.Id"></a></h5>
+                        <h5 class="card-title">@category.Name</h5>
+                        <h5 class="card-title">@category.Id</h5>
+                        <p class="card-text">@category.Description</p>
+                        <div type="button" class="btn btn-primary">
+                            <a asp-area="" asp-controller="Categories" asp-action="SingleCategory" asp-route-id="@category.Id">
+                                <span class="text-warning"> <h7> See Categories </h7> </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    }
+        }
+    </div>*@
+<div class="col-md-12">
+    <div class="row">
+
+        @foreach (var category in this.Model.Categories)
+        {
+
+            <div class="card col-md-6">
+                <img class="card-img-top" src="@category.ImageUrl" alt="@category.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@category.Name</h5>
+                    <p class="card-text">@category.Description</p>
+                    <a asp-controller="Categories" asp-action="SingleCategory" asp-route-id="@category.Id" class="btn btn-primary">Go to category</a>
+                </div>
+            </div>
+        }
+    </div>
 </div>
+
+<hr />
 
 <hr />
 <partial name="_PagingPartial" model="@Model" />
