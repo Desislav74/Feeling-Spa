@@ -2,23 +2,24 @@
 @{
     ViewData["Title"] = "Search salons by category";
 }
-
-<h1>@ViewData["Title"]</h1>
-
-<form asp-action="List" method="get">
-    <div class="row">
-        @foreach (var category in Model.Categories)
-        {
-            <div class="col-1 text-center">
-                <input id="category_@category.Id"
-                       type="checkbox"
-                       name="Categories"
-                       value="@category.Id"
-                       class="form-control" />
-                <label for="category @category.Id">@category.Name</label>
+<div class="p-3 mb-2 bg-darc text-warning text-center">
+<h1>@ViewData["Title"] </h1>
+</div>
+    <form asp-action="List" method="get">
+        <div class="row">
+            @foreach (var category in Model.Categories)
+            {
+                <div class="col-3 text-center">
+                    <input id="category_@category.Id"
+                           type="checkbox"
+                           name="Categories"
+                           value="@category.Id"
+                           class="form-control" />
+                    <label for="category @category.Id">@category.Name</label>
+                </div>
+            }
+        </div>
+        <div class="col-md-2 offset-5">
+                <button class="btn btn-primary">Search</button>
             </div>
-        }
-    </div>
-
-    <button class="btn btn-primary">Search</button>
-</form>
+    </form>

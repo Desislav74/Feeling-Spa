@@ -28,24 +28,7 @@
                             <input type="hidden" name="whatever1" class="rating-value" value="@Model.Rating">
                         </span>
                         <span>&nbsp; ( @Model.Rating.ToString("F") / 5.00 ) from @Model.RatingCount votes</span>
-                        @*<ul>
-
-                                 <li class="single-meta">
-                                     <a asp-controller="Salons" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">Edit</a>
-                                 </li>
-
-
-                                 <li class="single-meta">
-                                     <form method="post" asp-action="DeleteSalon" id="deleteForm" asp-route-id="@Model.Id">
-                                     </form>
-                                     <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                                 </li>
-
-
-                                 <li class="single-meta">
-                                     <button class="btn btn-warning" onclick="window.print()">Print</button>
-                                 </li>
-                            </ul>*@
+                       
                         <div class="btn-group btn-group-lg" role="group" aria-label="...">
                             <a asp-controller="Salons" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">Edit</a>
 
