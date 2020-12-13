@@ -1,4 +1,4 @@
-﻿@model FeelingSpa.Web.ViewModels.Home.SalonsIndexViewModel
+﻿
 @using FeelingSpa.Common
 @{
     this.ViewData["Title"] = "Home Page";
@@ -25,31 +25,6 @@
         </div>
     </div>
 
-    <div class="site-section bg-light">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md-12 text-center">
-                    <h2 class="site-section-heading text-center font-secondary">Our Special Salons</h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="row">
-
-                @foreach (var salon in this.Model.RandomSalons)
-                {
-
-                    <div class="card col-md-4">
-                        <img class="card-img-top" src="@salon.ImageUrl" alt="@salon.Name">
-                        <div class="card-body">
-                            <h5 class="card-title">@salon.Name</h5>
-                            <p class="card-text">@salon.CategoryName</p>
-                            <a asp-controller="Salons" asp-action="SingleSalon" asp-route-id="@salon.Id" class="btn btn-primary">Go to salon</a>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-    </div>
+    
     
 </body>

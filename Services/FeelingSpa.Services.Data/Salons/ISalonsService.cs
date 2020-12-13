@@ -23,6 +23,5 @@
 
         Task RateSalonAsync(string id, int rateValue);
 
-        IEnumerable<T> GetRandom<T>(int count);
     }
 }
