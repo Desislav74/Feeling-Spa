@@ -1,4 +1,6 @@
-﻿namespace FeelingSpa.Web.ViewModels.Home
+﻿using FeelingSpa.Web.ViewModels.Home;
+
+namespace FeelingSpa.Web.ViewModels.Home
 {
     using System.Collections.Generic;
 

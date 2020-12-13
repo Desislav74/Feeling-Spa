@@ -1,5 +1,6 @@
 ﻿using FeelingSpa.Services.Data.Salons;
 using FeelingSpa.Web.ViewModels.Home;
+using FeelingSpa.Web.ViewModels.Home;
 using IndexViewModel = FeelingSpa.Web.ViewModels.Administration.Dashboard.IndexViewModel;
 
 namespace FeelingSpa.Web.Controllers
@@ -25,7 +26,7 @@ namespace FeelingSpa.Web.Controllers
             {
                 RandomSalons = this.salonsService.GetRandom<HomePageSalonsViewModel>(10),
             };
-            return this.View(viewModel);
+            return this.View();
         }
 
         public IActionResult Privacy()
