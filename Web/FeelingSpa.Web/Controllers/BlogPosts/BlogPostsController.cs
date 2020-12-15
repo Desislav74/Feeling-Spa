@@ -70,5 +70,11 @@ namespace FeelingSpa.Web.Controllers.BlogPosts
 
             return this.Redirect("/BlogPosts/All");
         }
+
+        public async Task<IActionResult> Index(int id)
+        {
+            var viewModel = await this.blogPostsService.GetByIdAsync<BlogPostViewModel>(id);
+            return this.View(viewModel);
+        }
     }
 }

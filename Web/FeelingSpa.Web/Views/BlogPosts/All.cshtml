@@ -18,6 +18,7 @@
             <th scope="col">Author</th>
             <th scope="col">CreatedOn</th>
             <th scope="col">Delete Button</th>
+            <th scope="col">Blog Button</th>
         </tr>
     </thead>
     <tbody>
@@ -56,6 +57,14 @@
                 </td>
                 <td>@blogPost.Author</td>
                 <td>@blogPost.CreatedOn</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" class="btn btn-secondary btn-sm"
+                                asp-area="" asp-controller="BlogPosts" asp-action="Index" asp-route-id="@blogPost.Id">
+                            Blog
+                        </button>
+                    </form>
+                </td>
                 <td>
                     @if (blogPost.Id <= 4)
                     {
