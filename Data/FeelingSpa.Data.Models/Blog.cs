@@ -1,4 +1,6 @@
-﻿namespace FeelingSpa.Data.Models
+﻿using System.Collections.Generic;
+
+namespace FeelingSpa.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
 
@@ -6,6 +8,11 @@
 
     public class Blog : BaseDeletableModel<int>
     {
+        public Blog()
+        {
+            this.Images = new HashSet<Image>();
+        }
+
         [Required]
         [MaxLength(30)]
         public string Title { get; set; }
@@ -19,7 +26,6 @@
         [MaxLength(30)]
         public string Author { get; set; }
 
-        [Required]
-        public string Image { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

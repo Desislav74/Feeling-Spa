@@ -44,27 +44,28 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+         <div class="col-md-6" >
             <h2>Services:</h2>
-            <div class="tab_panel active">
-                <div class="tab_panel_content">
-                    <div class="tab_list">
-                        <ul>
-                            @foreach (var service in Model.Services.Where(x => x.Available == true))
-                            {
-                                <li>
-                                    <div class="tab_list_title">@service.ServiceName</div>
-                                    <div class="tab_list_text">
-                                        <p>@service.ServiceDescription</p>
-                                    </div>
-                                    <div class="button info_button">
-                                        <a asp-area="" asp-controller="Reservations" asp-action="MakeReservation"
-                                           asp-route-salonId="@service.SalonId" asp-route-serviceId="@service.ServiceId">
-                                            <span>book now</span><span>book now</span>
-                                        </a>
-                                    </div>
-                                </li>
-                            }
+              <div class="tab_panel active">
+                   <div class="tab_panel_content">
+                       <div class="tab_list">
+                            <ul class="nav nav-pills nav-stacked">
+                               @foreach (var service in Model.Services.Where(x => x.Available == true))
+                                {
+
+                                    <li>
+                                        <div class="tab_list_title">@service.ServiceName</div>
+                                        <div class="tab_list_text">
+                                            <p>@service.ServiceDescription</p>
+                                        </div>
+                                        <div class="button info_button">
+                                            <a asp-area="" asp-controller="Reservations" asp-action="MakeReservation"
+                                               asp-route-salonId="@service.SalonId" asp-route-serviceId="@service.ServiceId">
+                                                <span>book now</span><span>book now</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                }
                         </ul>
                     </div>
                 </div>
