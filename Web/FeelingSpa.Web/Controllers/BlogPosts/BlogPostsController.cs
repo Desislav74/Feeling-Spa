@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using FeelingSpa.Services.Data.Blogposts;
 using FeelingSpa.Web.ViewModels.BlogPost;
 using FeelingSpa.Web.ViewModels.Category;
+using FeelingSpa.Web.ViewModels.Common;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -71,10 +74,24 @@ namespace FeelingSpa.Web.Controllers.BlogPosts
             return this.Redirect("/BlogPosts/All");
         }
 
-        public async Task<IActionResult> Index(int id)
+        public IActionResult Index(int id = 1)
         {
-            var viewModel = await this.blogPostsService.GetByIdAsync<BlogPostViewModel>(id);
+            const int ItemsPerPage = 6;
+            var blogPosts = this.blogPostsService
+                .GetAll<BlogPostViewModel>(id, ItemsPerPage);
+            List<BlogPostViewModel> blogPostList = blogPosts.ToList();
+            var viewModel = new BlogPostsItemsListViewModel()
+            {
+                BlogPosts = new ItemsList<BlogPostViewModel>(blogPostList),
+            };
             return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SingleBlog(int id)
+        {
+          var viewModel = await this.blogPostsService.GetByIdAsync<BlogPostViewModel>(id);
+          return this.View(viewModel);
         }
     }
 }

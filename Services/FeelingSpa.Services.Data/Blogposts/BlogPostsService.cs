@@ -98,5 +98,19 @@ namespace FeelingSpa.Services.Data.Blogposts
             await this.blogsRepository.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<T>> GetAllLatestAsync<T>(int? count = null)
+        {
+            IQueryable<Blog> query =
+                this.blogsRepository
+                    .All()
+                    .OrderByDescending(x => x.CreatedOn);
+            if (count.HasValue)
+            {
+                query = query.Take(count.Value);
+            }
+
+            return await query.To<T>().ToListAsync();
+
+        }
     }
 }

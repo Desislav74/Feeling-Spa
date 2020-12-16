@@ -17,8 +17,8 @@
             <th scope="col">Content</th>
             <th scope="col">Author</th>
             <th scope="col">CreatedOn</th>
-            <th scope="col">Delete Button</th>
             <th scope="col">Blog Button</th>
+            <th scope="col">Delete Button</th>
         </tr>
     </thead>
     <tbody>
@@ -60,7 +60,7 @@
                 <td>
                     <form method="post">
                         <button type="submit" class="btn btn-secondary btn-sm"
-                                asp-area="" asp-controller="BlogPosts" asp-action="Index" asp-route-id="@blogPost.Id">
+                                asp-area="" asp-controller="BlogPosts" asp-action="SingleBlog" asp-route-id="@blogPost.Id">
                             Blog
                         </button>
                     </form>

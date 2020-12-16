@@ -75,7 +75,7 @@ namespace FeelingSpa.Web.Controllers.Salons
                 return this.NotFound();
             }
 
-            const int ItemsPerPage = 6;
+            const int ItemsPerPage = 7;
             var viewModel = new SalonsListViewModel
             {
                 ItemsPerPage = ItemsPerPage,
