@@ -19,5 +19,7 @@ namespace FeelingSpa.Services.Data.Blogposts
         Task UpdateAsync(int id, BlogPostInputModel input);
 
         Task<IEnumerable<T>> GetAllLatestAsync<T>(int? count = null);
+
+        Task<IEnumerable<T>> GetAllWithSingleAsync<T>(int? sortId);
     }
 }

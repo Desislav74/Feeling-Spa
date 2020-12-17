@@ -74,16 +74,31 @@ namespace FeelingSpa.Web.Controllers.BlogPosts
             return this.Redirect("/BlogPosts/All");
         }
 
-        public IActionResult Index(int id = 1)
+        public async Task<IActionResult> Index(int? sortId) // blogPostId
         {
-            const int ItemsPerPage = 6;
-            var blogPosts = this.blogPostsService
-                .GetAll<BlogPostViewModel>(id, ItemsPerPage);
-            List<BlogPostViewModel> blogPostList = blogPosts.ToList();
+            if (sortId != null)
+            {
+                var blogPost = await this.blogPostsService
+                    .GetByIdAsync<BlogPostViewModel>(sortId.Value);
+                if (blogPost == null)
+                {
+                    return new StatusCodeResult(404);
+                }
+            }
+
+            this.ViewData["CurrentSort"] = sortId;
+
+            var blogPosts = await this.blogPostsService
+                .GetAllWithSingleAsync<BlogPostViewModel>(sortId);
+            var blogPostsList = blogPosts.ToList();
+
+            var count = this.blogPostsService.GetCount();
+
             var viewModel = new BlogPostsItemsListViewModel()
             {
-                BlogPosts = new ItemsList<BlogPostViewModel>(blogPostList),
+                BlogPosts = new ItemsList<BlogPostViewModel>(blogPostsList, count),
             };
+
             return this.View(viewModel);
         }
 
