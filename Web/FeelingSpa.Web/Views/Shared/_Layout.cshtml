@@ -28,40 +28,46 @@
     @this.RenderSection("Styles", required: false)
  </head>
 <body>
- <header>
-      <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-             <div class="container">
-                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
-                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                         aria-expanded="false" aria-label="Toggle navigation">
-                     <span class="navbar-toggler-icon"></span>
-                 </button>
-                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                     <partial name="_LoginPartial" />
-                     <ul class="navbar-nav flex-grow-1">
-                         <li class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="All">Categories</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="Salons" asp-action="All">Salons</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="BlogPosts" asp-action="Index">BlogPosts</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="Search" asp-action="Index">Search</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="Reservations" asp-action="DetailsReservation">Reservations</a>
-                         </li>
-                     </ul>
-                 </div>
-             </div>
-         </nav>
- </header>
+    <header>
+        
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+               
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="All">Categories</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Salons" asp-action="All">Salons</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="BlogPosts" asp-action="Index">BlogPosts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Search" asp-action="Index">Search</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Reservations" asp-action="DetailsReservation">Reservations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Administration" asp-controller="Dashboard" asp-action="Index">Dashboadr</a>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+        </nav>
+       
+    </header>
 
      <div class="container">
          <partial name="_CookieConsentPartial" />
