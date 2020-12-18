@@ -14,11 +14,11 @@
                 <div class="info_text">Address: <strong>@Model.Description</strong></div>
                 <div class="info_text">
                     <div class="btn-group btn-group-lg" role="group" aria-label="...">
-                        @*<a asp-controller="Categories" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">Edit</a>
+                        <a asp-controller="Categories" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">Edit</a>
 
                         <form method="post" asp-action="DeleteCategory" id="deleteForm" asp-route-id="@Model.Id">
                         </form>
-                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>*@
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
 
                         <button class="btn btn-warning" onclick="window.print()">Print</button>
                     </div>

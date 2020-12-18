@@ -25,13 +25,9 @@
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/rangeslider.css">
     <link rel="stylesheet" href="css/style.css">
- </head>  
-    
-    
- 
-
- <body>
-     @this.RenderSection("Styles", required: false)
+    @this.RenderSection("Styles", required: false)
+ </head>
+<body>
  <header>
       <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
              <div class="container">
@@ -47,16 +43,13 @@
                              <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="Cities" asp-action="Create">CreateCity</a>
+                             <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="All">Categories</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Create">CreateCategory</a>
+                             <a class="nav-link text-dark" asp-area="" asp-controller="Salons" asp-action="All">Salons</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="Salons" asp-action="Create">CreateSalon</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="Salons" asp-action="All">AllSalons</a>
+                             <a class="nav-link text-dark" asp-area="" asp-controller="BlogPosts" asp-action="Index">BlogPosts</a>
                          </li>
                          <li class="nav-item">
                              <a class="nav-link text-dark" asp-area="" asp-controller="Search" asp-action="Index">Search</a>

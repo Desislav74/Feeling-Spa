@@ -1,20 +1,23 @@
 ﻿
-using System;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using FeelingSpa.Data.Models;
-using FeelingSpa.Services.Data.Reservations;
-using FeelingSpa.Services.Data.Salons;
-using FeelingSpa.Services.Data.SalonServices;
-using FeelingSpa.Services.DateTimeParser;
-using FeelingSpa.Web.ViewModels.Reservations;
-using FeelingSpa.Web.ViewModels.SalonServices;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FeelingSpa.Web.Controllers.Reservations
 {
+    using System;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using FeelingSpa.Data.Models;
+    using FeelingSpa.Services.Data.Reservations;
+    using FeelingSpa.Services.Data.Salons;
+    using FeelingSpa.Services.Data.SalonServices;
+    using FeelingSpa.Services.DateTimeParser;
+    using FeelingSpa.Web.ViewModels.Reservations;
+    using FeelingSpa.Web.ViewModels.SalonServices;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Primitives;
+
     public class ReservationsController : Controller
     {
         private readonly IReservationsService reservationsService;
@@ -32,6 +35,7 @@ namespace FeelingSpa.Web.Controllers.Reservations
             this.salonsService = salonsService;
         }
 
+        [Authorize]
         public async Task<IActionResult> DetailsReservation()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;

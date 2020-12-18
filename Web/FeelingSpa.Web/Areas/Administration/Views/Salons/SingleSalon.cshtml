@@ -29,44 +29,43 @@
                         </span>
                         <span>&nbsp; ( @Model.Rating.ToString("F") / 5.00 ) from @Model.RatingCount votes</span>
 
-                        @*<div class="btn-group btn-group-lg" role="group" aria-label="...">
+                        <div class="btn-group btn-group-lg" role="group" aria-label="...">
                             <a asp-controller="Salons" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">Edit</a>
 
                             <form method="post" asp-action="DeleteSalon" id="deleteForm" asp-route-id="@Model.Id">
                             </form>
                             <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                           <button class="btn btn-warning" onclick="window.print()">Print</button>
 
-                        </div>*@
-                    <div class="info_text"><button class="btn btn-warning" onclick="window.print()">Print</button></div>
+                            <button class="btn btn-warning" onclick="window.print()">Print</button>
+                        </div>
 
                     </div>
                 </div>
             </div>
         </div>
 
-         <div class="col-md-6" >
+        <div class="col-md-6">
             <h2>Services:</h2>
-              <div class="tab_panel active">
-                   <div class="tab_panel_content">
-                       <div class="tab_list">
-                            <ul class="nav nav-pills nav-stacked">
-                               @foreach (var service in Model.Services.Where(x => x.Available == true))
-                                {
+            <div class="tab_panel active">
+                <div class="tab_panel_content">
+                    <div class="tab_list">
+                        <ul class="nav nav-pills nav-stacked">
+                            @foreach (var service in Model.Services.Where(x => x.Available == true))
+                            {
 
-                                    <li>
-                                        <div class="tab_list_title">@service.ServiceName</div>
-                                        <div class="tab_list_text">
-                                            <p>@service.ServiceDescription</p>
-                                        </div>
-                                        <div class="button info_button">
-                                            <a asp-area="" asp-controller="Reservations" asp-action="MakeReservation"
-                                               asp-route-salonId="@service.SalonId" asp-route-serviceId="@service.ServiceId">
-                                                <span>book now</span><span>book now</span>
-                                            </a>
-                                        </div>
-                                    </li>
-                                }
+                                <li>
+                                    <div class="tab_list_title">@service.ServiceName</div>
+                                    <div class="tab_list_text">
+                                        <p>@service.ServiceDescription</p>
+                                    </div>
+                                    <div class="button info_button">
+                                        <a asp-area="" asp-controller="Reservations" asp-action="MakeReservation"
+                                           asp-route-salonId="@service.SalonId" asp-route-serviceId="@service.ServiceId">
+                                            <span>book now</span><span>book now</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
