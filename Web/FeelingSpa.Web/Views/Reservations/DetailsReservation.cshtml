@@ -8,8 +8,8 @@
 {
 
     <div>
-        <div class="p-3 mb-2 bg-light text-dark">
-            <h1> @this.ViewData["Title"]</h1>
+        <div class="alert alert-info text-center" role="alert">
+            <h1>@this.ViewData["Title"]</h1>
         </div>
 
         <div class="p-3 mb-2 bg-dark text-white">
@@ -29,24 +29,14 @@
             </p>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-2 ">
-            @*<div class="button button-large button_1 elements_button mt-4">*@
-            <a asp-area="" asp-controller="Salons" asp-action="All">
-                @*<span>Find Salons</span>
-                    <span>Find Salons</span>*@
-                <button type="button" class="btn btn-info">Fine Salons</button>
-            </a>
-            @*</div>*@
-        </div>
-    </div>
+    <a class="btn btn-outline-info btn-sm"asp-area="" asp-controller="Salons" asp-action="All">Fine Salons</a>
+  
 }
 
 @if (Model.Reservations.Count() > 0)
 {
-    <div class="alert alert-info" role="alert">
-    <h1>@this.ViewData["Title"]</h1>
+    <div class="alert alert-info text-center" role="alert">
+        <h1>@this.ViewData["Title"]</h1>
     </div>
         <table class="table table-bordered table-striped">
             <h2>Upcoming (@Model.Reservations.Count())</h2>
@@ -87,7 +77,7 @@
                         <td>@reservation.ServiceName</td>
                         <td>
                             <a class="btn btn-outline-success btn-sm"
-                               asp-area="" asp-controller="Reservations" asp-action="CanselReservation" asp-route-id="@reservation.Id">
+                               asp-area="" asp-controller="Reservations" asp-action="CancelReservation" asp-route-id="@reservation.Id">
                                 Cancel
                             </a>
                         </td>

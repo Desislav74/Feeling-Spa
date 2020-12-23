@@ -1,9 +1,11 @@
 ﻿@using FeelingSpa.Data.Models
 @model FeelingSpa.Web.ViewModels.Salons.SalonsListViewModel
 @{
-    this.ViewData["Title"] = "All Salons, page" + Model.PageNumber;
+    this.ViewData["Title"] = "Salons";
 }
-<h1>@this.ViewData["Title"]</h1>
+<div class="alert alert-info text-center" role="alert">
+    <h1>@this.ViewData["Title"]</h1>
+</div>
 <hr />
 <div class="col-md-12">
     <div class="row">

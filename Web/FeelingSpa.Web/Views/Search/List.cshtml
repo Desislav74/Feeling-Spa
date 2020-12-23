@@ -3,26 +3,27 @@
 @{
     ViewData["Title"] = "Search result";
 }
-
+<div class="alert alert-info text-center" role="alert">
 <h1>@ViewData["Title"]</h1>
+</div>
 
-@if (!Model.Salons.Any())
-{
-    <p>Nothing found.</p>
-}
-else
-{
-    <div class="row">
-        @foreach (var salon in this.Model.Salons)
-        {
-            <div class="card col-md-3">
-                <img class="card-img-top" src="@salon.ImageUrl" alt="@salon.Name">
-                <div class="card-body">
-                    <h5 class="card-title">@salon.Name</h5>
-                    <p class="card-text">@salon.CategoryName</p>
-                    <a asp-controller="Salons" asp-action="SingleSalon" asp-route-id="@salon.Id" class="btn btn-primary">Go to salon</a>
+    @if (!Model.Salons.Any())
+    {
+        <h1>Nothing found.</h1>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var salon in this.Model.Salons)
+            {
+                <div class="card col-md-3">
+                    <img class="card-img-top" src="@salon.ImageUrl" alt="@salon.Name">
+                    <div class="card-body">
+                        <h5 class="card-title">@salon.Name</h5>
+                        <p class="card-text">@salon.CategoryName</p>
+                        <a asp-controller="Salons" asp-action="SingleSalon" asp-route-id="@salon.Id" class="btn btn-primary">Go to salon</a>
+                    </div>
                 </div>
-            </div>
-        }
-    </div>
-}
+            }
+        </div>
+    }

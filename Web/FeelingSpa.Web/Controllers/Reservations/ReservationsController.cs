@@ -1,7 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Authorization;
-
-namespace FeelingSpa.Web.Controllers.Reservations
+﻿namespace FeelingSpa.Web.Controllers.Reservations
 {
     using System;
     using System.Security.Claims;
@@ -14,10 +11,12 @@ namespace FeelingSpa.Web.Controllers.Reservations
     using FeelingSpa.Services.DateTimeParser;
     using FeelingSpa.Web.ViewModels.Reservations;
     using FeelingSpa.Web.ViewModels.SalonServices;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Primitives;
 
+    [Authorize]
     public class ReservationsController : Controller
     {
         private readonly IReservationsService reservationsService;
@@ -35,7 +34,6 @@ namespace FeelingSpa.Web.Controllers.Reservations
             this.salonsService = salonsService;
         }
 
-        [Authorize]
         public async Task<IActionResult> DetailsReservation()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -88,7 +86,7 @@ namespace FeelingSpa.Web.Controllers.Reservations
         }
 
         [HttpGet]
-        public async Task<IActionResult> CanselReservation(string id)
+        public async Task<IActionResult> CancelReservation(string id)
         {
             var viewModel = await this.reservationsService.GetByIdAsync<ReservationViewModel>(id);
 

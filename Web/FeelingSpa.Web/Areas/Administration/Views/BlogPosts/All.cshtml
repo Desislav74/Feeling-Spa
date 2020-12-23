@@ -5,7 +5,7 @@
 <h2>
     All Blog Posts (@Model.BlogPosts.Count())
     <span>
-        <a class="btn btn-info" asp-area="" asp-controller="BlogPosts" asp-action="Create">Add New Blog Post</a>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="BlogPosts" asp-action="Create">Add New Blog Post</a>
     </span>
 </h2>
 
@@ -60,7 +60,7 @@
                 <td>
                     <form method="post">
                         <button type="submit" class="btn btn-secondary btn-sm"
-                                asp-area="" asp-controller="BlogPosts" asp-action="SingleBlog" asp-route-id="@blogPost.Id">
+                                asp-area="Administration" asp-controller="BlogPosts" asp-action="SingleBlog" asp-route-id="@blogPost.Id">
                             Blog
                         </button>
                     </form>
@@ -75,7 +75,7 @@
                     {
                         <form method="post">
                             <button type="submit" class="btn btn-danger btn-sm"
-                                    asp-area="" asp-controller="BlogPosts" asp-action="DeleteBlogPosts" asp-route-id="@blogPost.Id">
+                                    asp-area="Administration" asp-controller="BlogPosts" asp-action="DeleteBlogPosts" asp-route-id="@blogPost.Id">
                                 Delete
                             </button>
                         </form>}

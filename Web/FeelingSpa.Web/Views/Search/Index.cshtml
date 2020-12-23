@@ -2,9 +2,10 @@
 @{
     ViewData["Title"] = "Search salons by category";
 }
-<div class="p-3 mb-2 bg-darc text-warning text-center">
-<h1>@ViewData["Title"] </h1>
+<div class="alert alert-info" role="alert">
+    <h1 class="text-center">@this.ViewData["Title"]</h1>
 </div>
+<hr />
     <form asp-action="List" method="get">
         <div class="row">
             @foreach (var category in Model.Categories)

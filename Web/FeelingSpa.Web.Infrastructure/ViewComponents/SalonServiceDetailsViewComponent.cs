@@ -10,7 +10,7 @@
     {
         private readonly ISalonServicesService salonServicesService;
 
-        public SalonServiceDetailsViewComponent(ISalonServicesService salonServicesService) 
+        public SalonServiceDetailsViewComponent(ISalonServicesService salonServicesService)
         {
             this.salonServicesService = salonServicesService;
         }
