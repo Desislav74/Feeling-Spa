@@ -1,11 +1,12 @@
-﻿using System.ComponentModel;
-using System.Threading.Tasks;
-using FeelingSpa.Services.Data.Blogposts;
-using FeelingSpa.Web.ViewModels.BlogPost;
-using Microsoft.AspNetCore.Mvc;
-
-namespace FeelingSpa.Web.Infrastructure.ViewComponents
+﻿namespace FeelingSpa.Web.Infrastructure.ViewComponents
 {
+    using System.ComponentModel;
+    using System.Threading.Tasks;
+
+    using FeelingSpa.Services.Data.Blogposts;
+    using FeelingSpa.Web.ViewModels.BlogPost;
+    using Microsoft.AspNetCore.Mvc;
+
     public class LatestBlogPostsViewComponent : ViewComponent
     {
         private readonly IBlogPostsService blogPostsService;

@@ -1,12 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-using FeelingSpa.Services.Data.Blogposts;
-using FeelingSpa.Web.ViewModels.BlogPost;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-
-namespace FeelingSpa.Web.Areas.Administration.Controllers
+﻿namespace FeelingSpa.Web.Areas.Administration.Controllers
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using FeelingSpa.Services.Data.Blogposts;
+    using FeelingSpa.Web.ViewModels.BlogPost;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+
     public class BlogPostsController : AdministrationController
     {
 

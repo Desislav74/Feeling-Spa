@@ -1,8 +1,8 @@
-﻿using FeelingSpa.Data.Models;
-using FeelingSpa.Services.Mapping;
-
-namespace FeelingSpa.Web.ViewModels.Services
+﻿namespace FeelingSpa.Web.ViewModels.Services
 {
+    using FeelingSpa.Data.Models;
+    using FeelingSpa.Services.Mapping;
+
     public class ServiceViewModel : IMapFrom<Service>
     {
         public int Id { get; set; }

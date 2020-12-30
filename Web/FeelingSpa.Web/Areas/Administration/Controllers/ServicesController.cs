@@ -1,12 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-using FeelingSpa.Services.Data.Categories;
-using FeelingSpa.Services.Data.Services;
-using FeelingSpa.Web.ViewModels.Services;
-using Microsoft.AspNetCore.Mvc;
-
-namespace FeelingSpa.Web.Areas.Administration.Controllers
+﻿namespace FeelingSpa.Web.Areas.Administration.Controllers
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using FeelingSpa.Services.Data.Categories;
+    using FeelingSpa.Services.Data.Services;
+    using FeelingSpa.Web.ViewModels.Services;
+    using Microsoft.AspNetCore.Mvc;
+
     public class ServicesController : AdministrationController
     {
         private readonly IServicesService servicesService;

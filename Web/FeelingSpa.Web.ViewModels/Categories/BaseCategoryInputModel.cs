@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace FeelingSpa.Web.ViewModels.Categories
+﻿namespace FeelingSpa.Web.ViewModels.Categories
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class BaseCategoryInputModel
     {
         [Required]

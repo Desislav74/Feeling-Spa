@@ -1,10 +1,9 @@
-﻿using FeelingSpa.Web.ViewModels.Categories;
-
-namespace FeelingSpa.Web.ViewModels.Category
+﻿namespace FeelingSpa.Web.ViewModels.Category
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using FeelingSpa.Web.ViewModels.Categories;
     using Microsoft.AspNetCore.Http;
 
     public class CreateCategoryInputModel : BaseCategoryInputModel

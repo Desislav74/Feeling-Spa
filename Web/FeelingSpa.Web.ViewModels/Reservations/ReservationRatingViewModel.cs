@@ -1,10 +1,9 @@
-﻿using System.Linq;
-using AutoMapper;
-
-namespace FeelingSpa.Web.ViewModels.Reservations
+﻿namespace FeelingSpa.Web.ViewModels.Reservations
 {
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
 
+    using AutoMapper;
     using FeelingSpa.Data.Models;
     using FeelingSpa.Services.Mapping;
 

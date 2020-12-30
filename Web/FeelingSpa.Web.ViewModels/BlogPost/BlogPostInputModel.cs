@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using FeelingSpa.Common;
-using Microsoft.AspNetCore.Http;
-
-namespace FeelingSpa.Web.ViewModels.BlogPost
+﻿namespace FeelingSpa.Web.ViewModels.BlogPost
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using FeelingSpa.Common;
+    using Microsoft.AspNetCore.Http;
+
     public class BlogPostInputModel
     {
         [Required]

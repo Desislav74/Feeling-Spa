@@ -1,12 +1,13 @@
-﻿using System;
-using System.Linq;
-using AutoMapper;
-using FeelingSpa.Data.Models;
-using FeelingSpa.Services.Mapping;
-using FeelingSpa.Web.ViewModels.Category;
-
-namespace FeelingSpa.Web.ViewModels.BlogPost
+﻿namespace FeelingSpa.Web.ViewModels.BlogPost
 {
+    using System;
+    using System.Linq;
+
+    using AutoMapper;
+    using FeelingSpa.Data.Models;
+    using FeelingSpa.Services.Mapping;
+    using FeelingSpa.Web.ViewModels.Category;
+
     public class BlogPostViewModel : IMapFrom<Blog>, IHaveCustomMappings
     {
         public int Id { get; set; }

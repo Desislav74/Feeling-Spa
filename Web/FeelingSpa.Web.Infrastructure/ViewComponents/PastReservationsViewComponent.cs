@@ -1,12 +1,13 @@
-﻿using System.Threading.Tasks;
-using FeelingSpa.Data.Models;
-using FeelingSpa.Services.Data.Reservations;
-using FeelingSpa.Web.ViewModels.Reservations;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-
-namespace FeelingSpa.Web.Infrastructure.ViewComponents
+﻿namespace FeelingSpa.Web.Infrastructure.ViewComponents
 {
+    using System.Threading.Tasks;
+
+    using FeelingSpa.Data.Models;
+    using FeelingSpa.Services.Data.Reservations;
+    using FeelingSpa.Web.ViewModels.Reservations;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+
     public class PastReservationsViewComponent : ViewComponent
     {
         private readonly IReservationsService reservationsService;
