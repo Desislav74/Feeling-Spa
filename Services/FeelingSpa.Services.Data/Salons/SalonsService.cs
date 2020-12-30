@@ -86,6 +86,16 @@ namespace FeelingSpa.Services.Data.Salons
             return salon;
         }
 
+        public async Task<T> GetByIdAsync<T>(string id)
+        {
+            var salon =
+                await this.salonsRepository
+                    .All()
+                    .Where(x => x.Id == id)
+                    .To<T>().FirstOrDefaultAsync();
+            return salon;
+        }
+
         public async Task DeleteAsync(string id)
         {
             var salon =
@@ -136,6 +146,16 @@ namespace FeelingSpa.Services.Data.Salons
             salon.RatingCount = newRatersCount;
 
             await this.salonsRepository.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync<T>()
+        {
+            var salons =
+                await this.salonsRepository
+                    .All()
+                    .OrderBy(x => x.Name)
+                    .To<T>().ToListAsync();
+            return salons;
         }
     }
 }

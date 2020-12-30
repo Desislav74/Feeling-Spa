@@ -43,7 +43,7 @@
                 return this.View(input);
             }
 
-            return this.Redirect("/");
+            return this.RedirectToAction(nameof(this.All));
         }
 
         public IActionResult All(int id = 1)
@@ -76,7 +76,7 @@
         {
             await this.categoriesService.DeleteAsync(id);
 
-            return this.Redirect("/Categories/All");
+            return this.RedirectToAction(nameof(this.All));
         }
 
         public IActionResult Edit(int id)

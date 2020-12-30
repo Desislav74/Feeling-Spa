@@ -42,7 +42,7 @@ namespace FeelingSpa.Web.Areas.Administration.Controllers
                 return this.View(input);
             }
 
-            return this.RedirectToAction(nameof(All));
+            return this.RedirectToAction(nameof(this.All));
         }
 
         public IActionResult All(int id = 1)
@@ -68,7 +68,7 @@ namespace FeelingSpa.Web.Areas.Administration.Controllers
         {
             await this.blogPostsService.DeleteAsync(id);
 
-            return this.Redirect("/BlogPosts/All");
+            return this.RedirectToAction(nameof(this.All));
         }
 
         [HttpPost]

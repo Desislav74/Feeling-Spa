@@ -100,5 +100,27 @@ namespace FeelingSpa.Services.Data.Reservations
             appointment.IsSalonRatedByUser = true;
             await this.reservationsRepository.SaveChangesAsync();
         }
+
+        public async Task ConfirmAsync(string id)
+        {
+            var appointment =
+                await this.reservationsRepository
+                    .All()
+                    .Where(x => x.Id == id)
+                    .FirstOrDefaultAsync();
+            appointment.Confirmed = true;
+            await this.reservationsRepository.SaveChangesAsync();
+        }
+
+        public async Task DeclineAsync(string id)
+        {
+            var appointment =
+                await this.reservationsRepository
+                    .All()
+                    .Where(x => x.Id == id)
+                    .FirstOrDefaultAsync();
+            appointment.Confirmed = false;
+            await this.reservationsRepository.SaveChangesAsync();
+        }
     }
 }

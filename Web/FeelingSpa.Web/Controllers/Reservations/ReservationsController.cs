@@ -65,7 +65,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.RedirectToAction("MakeReservation", new { input.SalonId, input.ServiceId });
+                return this.RedirectToAction(nameof(this.MakeReservation), new { input.SalonId, input.ServiceId });
             }
 
             DateTime dateTime;
@@ -75,14 +75,14 @@
             }
             catch (System.Exception)
             {
-                return this.RedirectToAction("MakeReservation", new { input.SalonId, input.ServiceId });
+                return this.RedirectToAction(nameof(this.MakeReservation), new { input.SalonId, input.ServiceId });
             }
 
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             await this.reservationsService.AddAsync(userId, input.SalonId, input.ServiceId, dateTime);
 
-            return this.RedirectToAction("DetailsReservation");
+            return this.RedirectToAction(nameof(this.DetailsReservation));
         }
 
         [HttpGet]
@@ -98,7 +98,7 @@
         {
             await this.reservationsService.DeleteAsync(id);
 
-            return this.RedirectToAction("DetailsReservation");
+            return this.RedirectToAction(nameof(this.DetailsReservation));
         }
 
         public async Task<IActionResult> RatePastReservation(string id)
@@ -113,12 +113,12 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.RedirectToAction("RatePastReservation", new { id = rating.Id });
+                return this.RedirectToAction(nameof(this.RatePastReservation), new { id = rating.Id });
             }
 
             if (rating.IsSalonRatedByUser == true)
             {
-                return this.RedirectToAction("RatePastReservation", new { id = rating.Id });
+                return this.RedirectToAction(nameof(this.RatePastReservation), new { id = rating.Id });
             }
 
             await this.reservationsService.RateReservationAsync(rating.Id);

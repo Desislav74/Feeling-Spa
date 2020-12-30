@@ -1,12 +1,12 @@
-﻿using FeelingSpa.Services.Data.Categories;
-using FeelingSpa.Services.Data.Salons;
-using FeelingSpa.Web.ViewModels.Category;
-using FeelingSpa.Web.ViewModels.Salons;
-using FeelingSpa.Web.ViewModels.Search;
-using Microsoft.AspNetCore.Mvc;
-
-namespace FeelingSpa.Web.Controllers.Search
+﻿namespace FeelingSpa.Web.Controllers.Search
 {
+    using FeelingSpa.Services.Data.Categories;
+    using FeelingSpa.Services.Data.Salons;
+    using FeelingSpa.Web.ViewModels.Category;
+    using FeelingSpa.Web.ViewModels.Salons;
+    using FeelingSpa.Web.ViewModels.Search;
+    using Microsoft.AspNetCore.Mvc;
+
     public class SearchController : Controller
     {
         private readonly ICategoriesService categoriesService;

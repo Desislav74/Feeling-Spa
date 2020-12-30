@@ -19,5 +19,9 @@ namespace FeelingSpa.Services.Data.Reservations
         Task DeleteAsync(string id);
 
         Task RateReservationAsync(string id);
+
+        Task ConfirmAsync(string id);
+
+        Task DeclineAsync(string id);
     }
 }

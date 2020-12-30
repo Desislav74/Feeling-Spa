@@ -15,6 +15,8 @@
 
         T GetById<T>(string id);
 
+        Task<T> GetByIdAsync<T>(string id);
+
         Task DeleteAsync(string id);
 
         Task UpdateAsync(string id, CreateEditInputViewModel input);
@@ -22,6 +24,8 @@
         IEnumerable<T> GetByCategories<T>(IEnumerable<int> categoriesIds);
 
         Task RateSalonAsync(string id, int rateValue);
+
+        Task<IEnumerable<T>> GetAllAsync<T>();
 
     }
 }

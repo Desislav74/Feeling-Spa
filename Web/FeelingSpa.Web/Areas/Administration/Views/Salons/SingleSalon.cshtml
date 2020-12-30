@@ -60,12 +60,10 @@
                                     <div class="tab_list_text">
                                         <p>@service.ServiceDescription</p>
                                     </div>
-                                    @*<div class="button info_button">
-                                        <a asp-area="Administration" asp-controller="Reservations" asp-action="MakeReservation"
-                                           asp-route-salonId="@service.SalonId" asp-route-serviceId="@service.ServiceId">
-                                            <span>book now</span><span>book now</span>
-                                        </a>
-                                    </div>*@
+
+                                    <form method="post"asp-controller="Services" asp-action="DeleteService" id="deleteForm" asp-route-id="@Model.Id">
+                                    </form>
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
                                 </li>
                             }
                         </ul>

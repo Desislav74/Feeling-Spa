@@ -53,7 +53,7 @@ namespace FeelingSpa.Web.Areas.Administration.Controllers
         {
             await this.servicesService.DeleteAsync(id);
 
-            return this.RedirectToAction("/");
+            return this.RedirectToAction("SingleSalon", "Salons");
         }
     }
 }

@@ -1,13 +1,4 @@
-﻿using FeelingSpa.Services.Data.Blogposts;
-using FeelingSpa.Services.Data.Categories;
-using FeelingSpa.Services.Data.Cities;
-using FeelingSpa.Services.Data.Reservations;
-using FeelingSpa.Services.Data.Salons;
-using FeelingSpa.Services.Data.SalonServices;
-using FeelingSpa.Services.Data.Services;
-using FeelingSpa.Services.DateTimeParser;
-
-namespace FeelingSpa.Web
+﻿namespace FeelingSpa.Web
 {
     using System.Reflection;
 
@@ -18,10 +9,17 @@ namespace FeelingSpa.Web
     using FeelingSpa.Data.Repositories;
     using FeelingSpa.Data.Seeding;
     using FeelingSpa.Services.Data;
+    using FeelingSpa.Services.Data.Blogposts;
+    using FeelingSpa.Services.Data.Categories;
+    using FeelingSpa.Services.Data.Cities;
+    using FeelingSpa.Services.Data.Reservations;
+    using FeelingSpa.Services.Data.Salons;
+    using FeelingSpa.Services.Data.SalonServices;
+    using FeelingSpa.Services.Data.Services;
+    using FeelingSpa.Services.DateTimeParser;
     using FeelingSpa.Services.Mapping;
     using FeelingSpa.Services.Messaging;
     using FeelingSpa.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
