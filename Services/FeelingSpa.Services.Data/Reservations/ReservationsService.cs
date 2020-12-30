@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace FeelingSpa.Services.Data.Reservations
+﻿namespace FeelingSpa.Services.Data.Reservations
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -10,7 +9,6 @@ namespace FeelingSpa.Services.Data.Reservations
     using FeelingSpa.Data.Models;
     using FeelingSpa.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
-
 
     public class ReservationsService : IReservationsService
     {
@@ -121,6 +119,17 @@ namespace FeelingSpa.Services.Data.Reservations
                     .FirstOrDefaultAsync();
             appointment.Confirmed = false;
             await this.reservationsRepository.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllBySalonAsync<T>(string salonId)
+        {
+            var reservations =
+                await this.reservationsRepository
+                    .All()
+                    .Where(x => x.SalonId == salonId)
+                    .OrderByDescending(x => x.DateTime)
+                    .To<T>().ToListAsync();
+            return reservations;
         }
     }
 }

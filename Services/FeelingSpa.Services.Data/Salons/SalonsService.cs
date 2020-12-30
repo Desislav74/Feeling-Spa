@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-
-namespace FeelingSpa.Services.Data.Salons
+﻿namespace FeelingSpa.Services.Data.Salons
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -14,8 +12,8 @@ namespace FeelingSpa.Services.Data.Salons
     using FeelingSpa.Services.Mapping;
     using FeelingSpa.Web.ViewModels.City;
     using FeelingSpa.Web.ViewModels.Salons;
-
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
     public class SalonsService : ISalonsService
     {

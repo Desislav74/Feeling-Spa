@@ -23,5 +23,7 @@ namespace FeelingSpa.Services.Data.Reservations
         Task ConfirmAsync(string id);
 
         Task DeclineAsync(string id);
+
+        Task<IEnumerable<T>> GetAllBySalonAsync<T>(string salonId);
     }
 }
