@@ -25,14 +25,14 @@
 
             var admin = new ApplicationUser
             {
-                UserName = "desko@desko.com",
-                Email = "desko@desko.com",
+                UserName = "",
+                Email = "",
                 EmailConfirmed = true,
             };
             var manager = new ApplicationUser
             {
-                UserName = "manager@manager.com",
-                Email = "manager@manager.com",
+                UserName = "",
+                Email = "",
                 EmailConfirmed = true,
             };
 
