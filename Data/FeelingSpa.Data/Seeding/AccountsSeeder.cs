@@ -13,7 +13,7 @@
 
     internal class AccountsSeeder : ISeeder
     {
-        private const string UsersPassword = "123456";
+        private const string UsersPassword = "";
 
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {

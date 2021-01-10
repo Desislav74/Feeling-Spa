@@ -43,6 +43,11 @@
         public IActionResult SingleCategory(int id)
         {
             var viewModel = this.categoriesService.GetById<CategoryInListViewModel>(id);
+            if (viewModel == null)
+            {
+                return this.RedirectToAction("Error404", "Home");
+            }
+
             return this.View(viewModel);
         }
     }

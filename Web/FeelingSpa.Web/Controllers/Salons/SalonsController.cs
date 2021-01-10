@@ -55,6 +55,11 @@
         public IActionResult SingleSalon(string id)
         {
             var viewModel = this.salonsService.GetById<SalonWhitServicesViewModel>(id);
+            if (viewModel == null)
+            {
+               return this.RedirectToAction("Error404", "Home");
+            }
+
             return this.View(viewModel);
         }
     }

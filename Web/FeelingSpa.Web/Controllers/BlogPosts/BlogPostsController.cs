@@ -31,7 +31,7 @@
                     .GetByIdAsync<BlogPostViewModel>(sortId.Value);
                 if (blogPost == null)
                 {
-                    return new StatusCodeResult(404);
+                    return this.RedirectToAction("Error404", "Home");
                 }
             }
 

@@ -56,6 +56,7 @@
                 SalonId = salonId,
                 ServiceId = serviceId,
             };
+
             return this.View(viewModel);
         }
 
@@ -89,6 +90,10 @@
         public async Task<IActionResult> CancelReservation(string id)
         {
             var viewModel = await this.reservationsService.GetByIdAsync<ReservationViewModel>(id);
+            if (viewModel == null)
+            {
+                return this.RedirectToAction("Error404", "Home");
+            }
 
             return this.View(viewModel);
         }
@@ -104,6 +109,10 @@
         public async Task<IActionResult> RatePastReservation(string id)
         {
             var viewModel = await this.reservationsService.GetByIdAsync<ReservationRatingViewModel>(id);
+            if (viewModel == null)
+            {
+                return this.RedirectToAction("Error404", "Home");
+            }
 
             return this.View(viewModel);
         }
