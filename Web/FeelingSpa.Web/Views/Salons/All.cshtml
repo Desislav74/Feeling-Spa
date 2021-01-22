@@ -6,28 +6,28 @@
 <div class="alert alert-info text-center" role="alert">
     <h1>@this.ViewData["Title"]</h1>
 </div>
-    <hr />
-    <div class="col-md-12">
-        <div class="row">
+<hr />
+<div class="col-md-12">
+    <div class="row">
 
-            @foreach (var salon in this.Model.Salons)
-            {
+        @foreach (var salon in this.Model.Salons)
+        {
 
-                <div class="card col-md-4">
+            <div class="card col-md-4">
 
-                    <img class="card-img-top" src="@salon.ImageUrl" alt="@salon.Name">
-                    <div class="card-body">
-                        <h5 class="card-title">@salon.Name</h5>
-                        <p class="card-text">@salon.CategoryName</p>
-                        <a asp-controller="Salons" asp-action="SingleSalon" asp-route-id="@salon.Id" class="btn btn-primary">Go to salon</a>
-                    </div>
-
+                <img class="card-img-top" src="@salon.ImageUrl" alt="@salon.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@salon.Name</h5>
+                    <p class="card-text">@salon.CategoryName</p>
+                    <a asp-controller="Salons" asp-action="SingleSalon" asp-route-id="@salon.Id" class="btn btn-primary">Go to salon</a>
                 </div>
 
-            }
-        </div>
+            </div>
 
+        }
     </div>
 
-    <hr />
-    <partial name="_PagingPartial" model="@Model" />
+</div>
+
+<hr />
+<partial name="_PagingPartial" model="@Model" />

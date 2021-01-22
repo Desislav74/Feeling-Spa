@@ -28,7 +28,7 @@
                 return this.NotFound();
             }
 
-            const int ItemsPerPage = 6;
+            const int ItemsPerPage = 4;
             var viewModel = new CategoriesListViewModel()
             {
                 ItemsPerPage = ItemsPerPage,

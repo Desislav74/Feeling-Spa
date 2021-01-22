@@ -26,16 +26,18 @@
                              <td>@reservation.ServiceName</td>
                                 <td>
 
-                                    @if (reservation.IsSalonRatedByUser == true)
-                                    {
-                                        <p>Already Rated!</p>
-                                    }
-                                    else
-                                    {
+                                     @if (reservation.IsSalonRatedByUser == true)
+                                     {
+                                         <p>Already Rated!</p>
+                                     }
+                                     else
+                                     {
                                         <a class="btn btn-outline-success btn-sm"
                                            asp-area="" asp-controller="Reservations" asp-action="RatePastReservation" asp-route-id="@reservation.Id">
                                             Rate Salon
-                                        </a>}
+                                        </a>
+
+                                     }
                                 </td>
                                 <td>
                                     <div class="button elements_button">

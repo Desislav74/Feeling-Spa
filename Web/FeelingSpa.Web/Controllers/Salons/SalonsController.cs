@@ -40,7 +40,7 @@
                 return this.NotFound();
             }
 
-            const int ItemsPerPage = 7;
+            const int ItemsPerPage = 6;
             var viewModel = new SalonsListViewModel
             {
                 ItemsPerPage = ItemsPerPage,

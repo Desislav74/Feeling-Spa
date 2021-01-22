@@ -439,7 +439,7 @@ h1, h2, h3, h4, h5,
 }
 
 /* Navbar */
-.site-navbar {
+/*.site-navbar {
   margin-bottom: 0px;
   z-index: 1999;
   position: absolute;
@@ -663,7 +663,7 @@ h1, h2, h3, h4, h5,
   -o-transition: .3s all ease-in-out;
   transition: .3s all ease-in-out;
 }
-
+*/
 .offcanvas-menu .site-mobile-menu {
   -webkit-transform: translateX(0%);
   -ms-transform: translateX(0%);

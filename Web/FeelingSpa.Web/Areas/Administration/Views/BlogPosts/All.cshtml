@@ -67,35 +67,17 @@
                     </form>
                 </td>
                 <td>
-                    @if (blogPost.Id <= 4)
-                    {
-                        <div class="text-muted" style="font-size:smaller">
-                            Seeded Data <br />Cannot Be Deleted
-                        </div> }
-                    else
-                    {
-                        <form method="post" asp-area="Administration" asp-controller="BlogPosts" asp-action="DeleteBlogPosts" id="deleteForm" asp-route-id="@blogPost.Id">
-                        </form>
-                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                    }
+                   
+                    <form method="post">
+                        <button class="btn btn-danger"asp-area="Administration" asp-controller="BlogPosts" asp-action="DeleteBlogPosts" asp-route-id="@blogPost.Id">Delete</button>
+                    </form>
                 </td>
             </tr>
+
         }
+    
     </tbody>
 </table>
-<div class="modal" tabindex="-1" role="dialog" id="deleteModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <p>Do you want to delete ?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" onclick="deleteForm.submit()">Yes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 @section Scripts {
     <script src="~/js/rating-static.js" asp-append-version="true"></script>

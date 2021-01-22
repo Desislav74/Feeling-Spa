@@ -1,6 +1,5 @@
 ﻿@model FeelingSpa.Web.ViewModels.Reservations.ReservationRatingViewModel
 @{ this.ViewData["Title"] = "Rate Past Reservation"; }
-
 <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css?v=eZrrJcwDc_3uDhsdt61sL2oOBY362qM3lon1gyExkL0" rel="stylesheet" />
 <link href="/css/responsive.css?v=c-y01wzjy-FAWq1dGC88aXewH5KHSAQ4CXfnI-OV_nQ" rel="stylesheet" />
 @if (Model.IsSalonRatedByUser == true)
@@ -81,7 +80,7 @@ else
 @section Scripts {
     <script src="~/js/rating-responsive.js" asp-append-version="true"></script>
     <script type="text/javascript">
-    $.validator.setDefaults({
+        $.validator.setDefaults({
             ignore: ""
         })</script>
 }
