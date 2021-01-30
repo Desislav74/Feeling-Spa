@@ -1,5 +1,7 @@
 /* Base */
-body {
+@import url('https://fonts/icomoon/style.css');
+
+    body {
   line-height: 1.7;
   color: #4d4d4d;
   font-weight: 300;
@@ -239,7 +241,7 @@ h1, h2, h3, h4, h5,
   color: #000;
 }
 
-.site-footer a {
+    .site-footer a {
   color: #999999;
 }
 

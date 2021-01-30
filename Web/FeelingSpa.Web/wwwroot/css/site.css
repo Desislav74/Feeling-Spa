@@ -62,21 +62,22 @@
 2. Body and some general stuff
 *********************************/
 
-*
-{
+* {
 	margin: 0;
-	padding: 0;
+	padding-top: 0px;
+    padding-bottom: 3px;
 	-webkit-font-smoothing: antialiased;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-body
+
+/*body
 {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 14px;
 	font-weight: 400;
 	background: #FFFFFF;
 	color: #a5a5a5;
-}
+}*/
 div
 {
 	display: block;
@@ -147,7 +148,7 @@ p::selection
 h1{font-size: 48px;}
 h2{font-size: 36px;}
 h3{font-size: 24px;}
-h4{font-size: 18px;}
+h4{font-size: 20px;}
 h5{font-size: 14px;}
 h1, h2, h3, h4, h5, h6
 {
@@ -293,6 +294,7 @@ section
 	width: 100%;
 	height: 100%;
 	text-align: center;
+	
 }
 .button a span
 {
@@ -337,6 +339,7 @@ section
 	top: -10%;
 	font-size: 9px;
 	opacity: 0;
+	
 }
 .button:hover a span:last-child
 {
@@ -1514,7 +1517,7 @@ section
 /*********************************
 12. Footer
 *********************************/
-
+/*
 .footer
 {
 	display: block;
@@ -1747,11 +1750,28 @@ section
 	font-size: 20px;
 	color: #BA55D3;
 }
+*/
+
+	.site-footer a { color: #999999; }
+	.site-footer a {
+	
+    display: inline;
+    position: relative;
+    color: inherit;
+    /*border-bottom: solid 1px #ffa07f;*/
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+a:hover {
+	color: #ffa07f
+}
 
 /*********************************
 13. About
 *********************************/
-
+/*
 .about {
 	width: 100%;
 	background: #FFFFFF;
@@ -1787,12 +1807,10 @@ section
 
 .about_button {
 	margin-top: 49px;
-}
-
+}*/
 /*********************************
 14. Milestones
 *********************************/
-
 .milestones {
 	width: 100%;
 	background: #f5f6f8;
@@ -1836,7 +1854,7 @@ section
 /*********************************
 15. Doctors
 *********************************/
-
+/*
 .doctors {
 	width: 100%;
 	background: #FFFFFF;
@@ -1983,11 +2001,11 @@ section
 	-o-transform: translateX(-50%);
 	transform: translateX(-50%);
 }
+*/
 
 /*********************************
 16. Boxes
 *********************************/
-
 .boxes {
 	width: 100%;
 }
@@ -2607,7 +2625,7 @@ section
 19. Contact
 *********************************/
 
-.contact {
+/*.contact {
 	width: 100%;
 	background: #FFFFFF;
 	padding-top: 100px;
@@ -2706,8 +2724,8 @@ section
 	cursor: pointer;
 	margin-top: 28px;
 }
-
-.info_form_container {
+*/
+/*.info_form_container {
 	width: 100%;
 	background: #e5ecf1;
 	height: 100%;
@@ -2857,11 +2875,11 @@ section
 		.contact_info_list ul li span {
 			color: #404040;
 		}
-
+*/
 /*********************************
 20. Google Map
 *********************************/
-
+/*
 .contact_map {
 	width: 100%;
 	height: 752px;
@@ -2888,7 +2906,7 @@ section
 #map {
 	width: 100%;
 	height: calc(100% + 30px);
-}
+}*/
 
 /*********************************
 21. Elements
@@ -2931,7 +2949,7 @@ section
 /*********************************
 21.2 Accordions
 *********************************/
-
+/*
 .accordions {
 	margin-top: 90px;
 }
@@ -3026,7 +3044,7 @@ section
 		padding-top: 35px;
 		color: #838383;
 		line-height: 2.14;
-	}
+	}*/
 
 /*********************************
 21.3 Tabs
@@ -3173,7 +3191,7 @@ section
 /*********************************
 21.4 Loaders
 *********************************/
-
+/*
 .loaders {
 	margin-top: 100px;
 	padding-bottom: 38px;
@@ -3210,12 +3228,12 @@ section
 	font-size: 18px;
 	color: #252525;
 	font-weight: 500;
-}
+}*/
 
 /*********************************
 21.5 Milestones
 *********************************/
-
+/*
 .milestones {
 	margin-top: 100px;
 }
@@ -3256,7 +3274,7 @@ section
 	margin-top: 12px;
 	line-height: 1.2;
 }
-
+*/
 /*********************************
 21.6 Icon Boxes
 *********************************/
