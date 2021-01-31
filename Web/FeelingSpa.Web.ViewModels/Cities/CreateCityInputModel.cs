@@ -1,11 +1,13 @@
-﻿namespace FeelingSpa.Web.ViewModels.City
+﻿using FeelingSpa.Common;
+
+namespace FeelingSpa.Web.ViewModels.City
 {
     using System.ComponentModel.DataAnnotations;
 
     public class CreateCityInputModel
     {
-        [MinLength(3)]
-        [MaxLength(50)]
+        [MinLength(GlobalConstants.DataValidations.CityNameMinLength)]
+        [MaxLength(GlobalConstants.DataValidations.CityNameMaxLength)]
         public string Name { get; set; }
     }
 }

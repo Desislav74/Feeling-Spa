@@ -1,16 +1,18 @@
-﻿namespace FeelingSpa.Web.ViewModels.Categories
+﻿using FeelingSpa.Common;
+
+namespace FeelingSpa.Web.ViewModels.Categories
 {
     using System.ComponentModel.DataAnnotations;
 
     public class BaseCategoryInputModel
     {
         [Required]
-        [MinLength(2)]
-        [MaxLength(20)]
+        [MinLength(GlobalConstants.DataValidations.CategoryNameMinLength)]
+        [MaxLength(GlobalConstants.DataValidations.CategoryNameMaxLength)]
         public string Name { get; set; }
 
         [Required]
-        [MinLength(100)]
+        [MinLength(GlobalConstants.DataValidations.DescriptionMinLength)]
         public string Description { get; set; }
     }
 }

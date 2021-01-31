@@ -9,11 +9,14 @@
     public class BlogPostInputModel
     {
         [Required]
+        [MaxLength(GlobalConstants.DataValidations.TitleMaxLength)]
         public string Title { get; set; }
 
         [Required]
+        [MinLength(GlobalConstants.DataValidations.ContentMinLength)]
         public string Content { get; set; }
 
+        [MaxLength(GlobalConstants.DataValidations.AuthorMaxLength)]
         public string Author { get; set; }
 
         public IEnumerable<IFormFile> Images { get; set; }

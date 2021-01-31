@@ -214,5 +214,8 @@
     <Content Update="wwwroot\scss\_site-base.scss">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\scss\_site-blocks.scss">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

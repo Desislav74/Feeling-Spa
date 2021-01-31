@@ -1,4 +1,6 @@
-﻿namespace FeelingSpa.Web.ViewModels.Reservations
+﻿using FeelingSpa.Common;
+
+namespace FeelingSpa.Web.ViewModels.Reservations
 {
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
@@ -28,7 +30,7 @@
         public bool? IsSalonRatedByUser { get; set; }
 
         [Required]
-        [Range(1, 5, ErrorMessage = "Please choose a valid number of stars from 1 to 5.")]
+        [Range(1, 5, ErrorMessage = GlobalConstants.ErrorMessages.Rating)]
         public int RateValue { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)

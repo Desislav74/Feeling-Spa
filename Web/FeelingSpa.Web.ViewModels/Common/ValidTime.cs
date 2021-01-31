@@ -1,4 +1,6 @@
-﻿namespace FeelingSpa.Web.ViewModels.Common
+﻿using FeelingSpa.Common;
+
+namespace FeelingSpa.Web.ViewModels.Common
 {
     using System;
     using System.ComponentModel.DataAnnotations;
@@ -17,7 +19,7 @@
 
             bool parsed = DateTime.TryParseExact(
                 timeString,
-                "h:mmtt",
+                GlobalConstants.DateTimeFormats.TimeFormat,
                 CultureInfo.InvariantCulture,
                 style: DateTimeStyles.AssumeUniversal,
                 result: out _);

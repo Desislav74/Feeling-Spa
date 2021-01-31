@@ -20,7 +20,7 @@
             DateTime dt;
             bool parsed = DateTime.TryParseExact(
                 dateString,
-                "dd-MM-yyyy",
+                GlobalConstants.DateTimeFormats.DateFormat,
                 CultureInfo.InvariantCulture,
                 style: DateTimeStyles.AssumeUniversal,
                 result: out dt);

@@ -13,7 +13,7 @@
 
     internal class AccountsSeeder : ISeeder
     {
-        private const string UsersPassword = "";
+        private const string UsersPassword = GlobalConstants.AccountsSeeding.Password;
 
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
@@ -25,19 +25,19 @@
 
             var admin = new ApplicationUser
             {
-                UserName = "",
-                Email = "",
+                UserName = GlobalConstants.AccountsSeeding.AdminEmail,
+                Email = GlobalConstants.AccountsSeeding.AdminEmail,
                 EmailConfirmed = true,
             };
             var manager = new ApplicationUser
             {
-                UserName = "",
-                Email = "",
+                UserName = GlobalConstants.AccountsSeeding.SalonManagerEmail,
+                Email = GlobalConstants.AccountsSeeding.SalonManagerEmail,
                 EmailConfirmed = true,
             };
 
             await SeedUser(userManager, admin, UsersPassword, GlobalConstants.AdministratorRoleName);
-            await SeedUser(userManager, manager, UsersPassword, "Manager");
+            await SeedUser(userManager, manager, UsersPassword, GlobalConstants.SalonManagerRoleName);
         }
 
         private static async Task SeedUser(UserManager<ApplicationUser> userManager, ApplicationUser user,
