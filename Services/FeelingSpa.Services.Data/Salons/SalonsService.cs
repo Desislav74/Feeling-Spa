@@ -64,7 +64,7 @@
         public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 6)
         {
             var salons = this.salonsRepository.AllAsNoTracking()
-                .OrderByDescending(x => x.Id)
+                .OrderByDescending(x => x.CreatedOn)
                 .Skip((page - 1) * itemsPerPage).Take(itemsPerPage)
                 .To<T>().ToList();
             return salons;
