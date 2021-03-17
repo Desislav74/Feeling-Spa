@@ -41,14 +41,14 @@
 
         public async Task<IEnumerable<T>> GetReservationsByUserAsync<T>(string userId)
         {
-            var appointments =
+            var reservations =
                 await this.reservationsRepository
                     .All()
                     .Where(x => x.UserId == userId
                                 && x.DateTime.Date > DateTime.UtcNow.Date)
                     .OrderBy(x => x.DateTime)
                     .To<T>().ToListAsync();
-            return appointments;
+            return reservations;
         }
 
         public async Task<IEnumerable<T>> GetPastByUserAsync<T>(string userId)
@@ -79,45 +79,45 @@
 
         public async Task DeleteAsync(string id)
         {
-            var appointment =
+            var reservation =
                 await this.reservationsRepository
                     .AllAsNoTracking()
                     .Where(x => x.Id == id)
                     .FirstOrDefaultAsync();
-            this.reservationsRepository.Delete(appointment);
+            this.reservationsRepository.Delete(reservation);
             await this.reservationsRepository.SaveChangesAsync();
         }
 
         public async Task RateReservationAsync(string id)
         {
-            var appointment =
+            var reservation =
                 await this.reservationsRepository
                     .All()
                     .Where(x => x.Id == id)
                     .FirstOrDefaultAsync();
-            appointment.IsSalonRatedByUser = true;
+            reservation.IsSalonRatedByUser = true;
             await this.reservationsRepository.SaveChangesAsync();
         }
 
         public async Task ConfirmAsync(string id)
         {
-            var appointment =
+            var reservation =
                 await this.reservationsRepository
                     .All()
                     .Where(x => x.Id == id)
                     .FirstOrDefaultAsync();
-            appointment.Confirmed = true;
+            reservation.Confirmed = true;
             await this.reservationsRepository.SaveChangesAsync();
         }
 
         public async Task DeclineAsync(string id)
         {
-            var appointment =
+            var reservation =
                 await this.reservationsRepository
                     .All()
                     .Where(x => x.Id == id)
                     .FirstOrDefaultAsync();
-            appointment.Confirmed = false;
+            reservation.Confirmed = false;
             await this.reservationsRepository.SaveChangesAsync();
         }
 
