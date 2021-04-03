@@ -10,11 +10,11 @@
 
         public static class AccountsSeeding
         {
-            public const string Password = "123456";
+            public const string Password = "";
 
-            public const string AdminEmail = "desko@desko.com";
+            public const string AdminEmail = "";
 
-            public const string SalonManagerEmail = "manager@manager.com";
+            public const string SalonManagerEmail = "";
         }
 
         public static class DataValidations
@@ -66,5 +66,4 @@
             public const string DateTimeFormat = "dd-MM-yyyy h:mmtt";
         }
     }
-
 }

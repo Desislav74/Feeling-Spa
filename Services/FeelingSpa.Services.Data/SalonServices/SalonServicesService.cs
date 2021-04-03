@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
-using FeelingSpa.Web.ViewModels.SalonServices;
-
-namespace FeelingSpa.Services.Data.SalonServices
+﻿namespace FeelingSpa.Services.Data.SalonServices
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
     using FeelingSpa.Data.Common.Repositories;
     using FeelingSpa.Data.Models;
     using FeelingSpa.Services.Mapping;
+    using FeelingSpa.Web.ViewModels.SalonServices;
     using Microsoft.EntityFrameworkCore;
 
     public class SalonServicesService : ISalonServicesService
@@ -73,6 +72,5 @@ namespace FeelingSpa.Services.Data.SalonServices
 
             await this.salonServicesRepository.SaveChangesAsync();
         }
-
     }
 }

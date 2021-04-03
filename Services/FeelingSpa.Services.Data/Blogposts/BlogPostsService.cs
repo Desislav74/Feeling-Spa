@@ -1,23 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using FeelingSpa.Data.Common.Repositories;
-using FeelingSpa.Data.Models;
-using FeelingSpa.Services.Mapping;
-using FeelingSpa.Web.ViewModels.BlogPost;
-using FeelingSpa.Web.ViewModels.Salons;
-using Microsoft.EntityFrameworkCore;
-
-namespace FeelingSpa.Services.Data.Blogposts
+﻿namespace FeelingSpa.Services.Data.Blogposts
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using FeelingSpa.Data.Common.Repositories;
+    using FeelingSpa.Data.Models;
+    using FeelingSpa.Services.Mapping;
+    using FeelingSpa.Web.ViewModels.BlogPost;
+    using FeelingSpa.Web.ViewModels.Salons;
+    using Microsoft.EntityFrameworkCore;
+
     public class BlogPostsService : IBlogPostsService
     {
         private readonly IDeletableEntityRepository<Blog> blogsRepository;
         private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif" };
 
-        public BlogPostsService(IDeletableEntityRepository<Blog>blogsRepository)
+        public BlogPostsService(IDeletableEntityRepository<Blog> blogsRepository)
         {
             this.blogsRepository = blogsRepository;
         }
@@ -126,7 +127,6 @@ namespace FeelingSpa.Services.Data.Blogposts
             }
 
             return await query.To<T>().ToListAsync();
-
         }
     }
 }

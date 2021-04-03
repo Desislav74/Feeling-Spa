@@ -1,10 +1,4 @@
-﻿using FeelingSpa.Services.Mapping;
-using FeelingSpa.Web.ViewModels.Categories;
-using FeelingSpa.Web.ViewModels.Salons;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-
-namespace FeelingSpa.Services.Data.Categories
+﻿namespace FeelingSpa.Services.Data.Categories
 {
     using System;
     using System.Collections.Generic;
@@ -14,7 +8,12 @@ namespace FeelingSpa.Services.Data.Categories
 
     using FeelingSpa.Data.Common.Repositories;
     using FeelingSpa.Data.Models;
+    using FeelingSpa.Services.Mapping;
+    using FeelingSpa.Web.ViewModels.Categories;
     using FeelingSpa.Web.ViewModels.Category;
+    using FeelingSpa.Web.ViewModels.Salons;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
 
     public class CategoriesService : ICategoriesService
     {
@@ -37,7 +36,7 @@ namespace FeelingSpa.Services.Data.Categories
             Directory.CreateDirectory($"{imagePath}/categories/");
             foreach (var image in input.Images)
             {
-                var extension = Path.GetExtension(image.FileName).TrimStart('.'); 
+                var extension = Path.GetExtension(image.FileName).TrimStart('.');
                 if (!this.allowedExtensions.Any(x => extension.EndsWith(x)))
                 {
                    throw new Exception($"Invalid image extension {extension}");

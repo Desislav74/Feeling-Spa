@@ -14,7 +14,7 @@
     {
         private readonly IDeletableEntityRepository<Reservation> reservationsRepository;
 
-        public ReservationsService(IDeletableEntityRepository<Reservation>reservationsRepository)
+        public ReservationsService(IDeletableEntityRepository<Reservation> reservationsRepository)
         {
             this.reservationsRepository = reservationsRepository;
         }

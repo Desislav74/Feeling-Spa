@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Threading.Tasks;
-using FeelingSpa.Data.Common.Repositories;
-namespace FeelingSpa.Services.Data.Cities
+﻿namespace FeelingSpa.Services.Data.Cities
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Runtime.InteropServices.ComTypes;
+    using System.Threading.Tasks;
+
+    using FeelingSpa.Data.Common.Repositories;
     using FeelingSpa.Data.Models;
     using FeelingSpa.Web.ViewModels.City;
 
